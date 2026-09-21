@@ -1,3 +1,34 @@
 *~
 .sw[a-p]
 .DS_Store
+
+# Composer dependencies and generated Drupal scaffold.
+/vendor/
+/web/core/
+/web/libraries/
+/web/modules/contrib/
+/web/profiles/contrib/
+/web/themes/contrib/
+/drush/Commands/contrib/
+
+# Drupal's writable site data.
+/web/sites/*/files/
+/web/sites/*/private/
+!/web/sites/*/files/.gitkeep
+
+# Local Drupal settings and service overrides.
+/web/sites/*/settings.local.php
+/web/sites/*/services.local.yml
+
+# Local environment and tooling files.
+.env
+.env.*
+!.env.example
+.phpunit.result.cache
+.phpunit.cache/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.idea/
+.vscode/
