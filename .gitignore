@@ -38,3 +38,7 @@ yarn-debug.log*
 yarn-error.log*
 .idea/
 .vscode/
+web/themes/custom/omd/templates/**/*.stories.json
+
+*storybook.log
+storybook-static

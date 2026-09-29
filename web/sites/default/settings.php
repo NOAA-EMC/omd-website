@@ -730,6 +730,10 @@ $settings['update_free_access'] = FALSE;
  */
 $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
 
+if (getenv('LANDO') === 'ON') {
+  $settings['container_yamls'][] = $app_root . '/sites/development.services.yml';
+}
+
 /**
  * Override the default service container class.
  *
