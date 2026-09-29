@@ -1,0 +1,43 @@
+{% stories usa_alert with { title: 'OMD/Components/Alert' } %}
+
+{% story information with { name: 'Information' } %}
+{{ include('omd:alert', {
+alert_type: 'info',
+heading: 'Model guidance available',
+message: 'The latest forecast guidance is ready for review.'
+}, false) }}
+{% endstory %}
+
+{% story warning with { name: 'Warning' } %}
+{{ include('omd:alert', {
+alert_type: 'warning',
+heading: 'Forecast update',
+message: 'A new model cycle may change the forecast.'
+}, false) }}
+{% endstory %}
+
+{% story success with { name: 'Success' } %}
+{{ include('omd:alert', {
+alert_type: 'success',
+heading: 'Update completed',
+message: 'The forecast has been updated successfully.'
+}, false) }}
+{% endstory %}
+
+{% story error with { name: 'Error' } %}
+{{ include('omd:alert', {
+alert_type: 'error',
+heading: 'Update failed',
+message: 'An error occurred while updating the forecast.'
+}, false) }}
+{% endstory %}
+
+{% story emergency with { name: 'Emergency' } %}
+{{ include('omd:alert', {
+alert_type: 'emergency',
+heading: 'Emergency update',
+message: 'An emergency update is available for the forecast.'
+}, false) }}
+{% endstory %}
+
+{% endstories %}

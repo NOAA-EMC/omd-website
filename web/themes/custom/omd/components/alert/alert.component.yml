@@ -1,0 +1,28 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Alert
+description: USWDS alert for forecast and model guidance messages.
+status: stable
+props:
+  type: object
+  properties:
+    alert_type:
+      type: string
+      title: Alert type
+      enum:
+        - info
+        - warning
+        - error
+        - success
+        - emergency
+      meta:enum:
+        info: Information
+        warning: Warning
+        error: Error
+        success: Success
+        emergency: Emergency
+    heading:
+      type: string
+      title: Heading
+    message:
+      type: string
+      title: Message

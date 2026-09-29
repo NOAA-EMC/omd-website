@@ -1,0 +1,11 @@
+{% set alert_type = alert_type|default('info') %}
+{% set heading = heading|default('Weather advisory') %}
+{% set message = message|default('Forecast information is available.') %}
+{% set role = role|default(alert_type == 'error' ? 'alert' : 'status') %}
+
+<div class="usa-alert usa-alert--{{ alert_type }}" role="{{ role }}">
+	<div class="usa-alert__body">
+		<h4 class="usa-alert__heading">{{ heading }}</h4>
+		<p class="usa-alert__text">{{ message }}</p>
+	</div>
+</div>
