@@ -1,0 +1,8 @@
+<IfModule mod_setenvif.c>
+  SetEnvIf Origin "^http://localhost:6006$" CORS_ALLOWED_ORIGIN=$0
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set Access-Control-Allow-Origin "%{CORS_ALLOWED_ORIGIN}e" env=CORS_ALLOWED_ORIGIN
+  Header always merge Vary Origin env=CORS_ALLOWED_ORIGIN
+</IfModule>
