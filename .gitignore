@@ -42,5 +42,4 @@ yarn-error.log*
 *storybook.log
 storybook-static
 web/themes/custom/omd/**/*.stories.json
-web/themes/custom/omd/css/styles.css
-web/themes/custom/omd/css/styles.css.map
+web/themes/custom/omd/css/
