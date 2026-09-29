@@ -102,5 +102,8 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
+    },
+    "require-dev": {
+        "drupal/storybook": "^1.0"
     }
 }
