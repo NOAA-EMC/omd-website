@@ -24,6 +24,12 @@
 .env
 .env.*
 !.env.example
+*.sql
+*.sql.gz
+*.sqlite
+*.sqlite3
+*.db
+*.dump
 .phpunit.result.cache
 .phpunit.cache/
 node_modules/
