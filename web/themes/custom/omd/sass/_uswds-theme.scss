@@ -10,5 +10,6 @@ in the form $setting: value,
 //
 @use "uswds-core" with (
   $theme-image-path: "../uswds/img",
-  $theme-font-path: "../uswds/fonts"
+  $theme-font-path: "../uswds/fonts",
+  $theme-show-notifications: false
 );

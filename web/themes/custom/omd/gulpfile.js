@@ -47,7 +47,7 @@ function compileSassAt(themePath, cssPath) {
   });
 }
 
-// prodBuild/watchCss: compile non-partial component Sass beside its SDC.
+// build/watchCss: compile non-partial component Sass beside its SDC.
 async function compileComponentSass() {
   for (const directory of componentDirectories()) {
     const hasEntryPoint = fs
@@ -79,10 +79,10 @@ function copyCustomImages() {
   );
 }
 
-// prodBuild/watchCustomAssets: copy both custom asset types in order.
+// build/watchCustomAssets: copy both custom asset types in order.
 const copyCustomAssets = series(copyCustomJavaScript, copyCustomImages);
 
-// watchCss rebuilds theme Sass; prodBuild uses uswds.updateUswds.
+// watchCss rebuilds theme Sass; build uses uswds.updateUswds.
 function compileThemeSass() {
   return compileSassAt('./sass', './assets/css');
 }
@@ -143,8 +143,8 @@ function watchStories() {
   );
 }
 
-// npm prod-build: refresh USWDS assets, copy custom assets, compile components.
-exports.prodBuild = series(
+// npm build: refresh USWDS assets, copy custom assets, compile components.
+exports.build = series(
   uswds.updateUswds,
   copyCustomAssets,
   compileComponentSass
