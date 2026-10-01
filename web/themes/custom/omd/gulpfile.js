@@ -11,22 +11,15 @@ const componentPath = './components';
 const sassPaths = ['sass/**/*.scss', 'components/**/*.scss'];
 const customAssetPaths = ['js/**/*', 'images/**/*'];
 
-/**
- * USWDS version
- */
-
+// Compile against USWDS 3.
 uswds.settings.version = 3;
 
-/**
- * Path settings
- * Set as many as you need
- */
-
+// Emit Drupal theme CSS and source maps under assets/.
 uswds.paths.dist.css = './assets/css';
 uswds.paths.dist.theme = './sass';
 uswds.settings.compile.sassSourcemaps = true;
-uswds.paths.src.projectIcons = './images';
 
+// Find SDC folders for component Sass compilation.
 function componentDirectories() {
   return fs
     .readdirSync(componentPath, { withFileTypes: true })
@@ -34,6 +27,7 @@ function componentDirectories() {
     .map((entry) => path.join(componentPath, entry.name));
 }
 
+// Compile with temporary USWDS paths, then restore the shared compiler config.
 function compileSassAt(themePath, cssPath) {
   const originalThemePath = uswds.paths.dist.theme;
   const originalCssPath = uswds.paths.dist.css;
@@ -53,6 +47,7 @@ function compileSassAt(themePath, cssPath) {
   });
 }
 
+// prodBuild/watchCss: compile non-partial component Sass beside its SDC.
 async function compileComponentSass() {
   for (const directory of componentDirectories()) {
     const hasEntryPoint = fs
@@ -64,40 +59,55 @@ async function compileComponentSass() {
   }
 }
 
+// Copy optional project JS; a missing source folder is a no-op.
 function copyCustomJavaScript() {
+  if (!fs.existsSync('./js')) {
+    return Promise.resolve();
+  }
   return src('./js/**/*', { allowEmpty: true, encoding: false }).pipe(
     dest('./assets/js')
   );
 }
 
+// Copy optional project images; a missing source folder is a no-op.
 function copyCustomImages() {
+  if (!fs.existsSync('./images')) {
+    return Promise.resolve();
+  }
   return src('./images/**/*', { allowEmpty: true, encoding: false }).pipe(
     dest('./assets/images')
   );
 }
 
+// prodBuild/watchCustomAssets: copy both custom asset types in order.
 const copyCustomAssets = series(copyCustomJavaScript, copyCustomImages);
 
+// watchCss rebuilds theme Sass; prodBuild uses uswds.updateUswds.
 function compileThemeSass() {
   return compileSassAt('./sass', './assets/css');
 }
 
+// npm watch-css/watchAll: rebuild theme and component Sass on changes.
 function watchCss() {
   return watch(sassPaths, series(compileThemeSass, compileComponentSass));
 }
 
+// watchAll: recopy custom JS/images when sources change.
 function watchCustomAssets() {
   return watch(customAssetPaths, copyCustomAssets);
 }
 
+// npm watch-all: run Sass and custom asset watchers in parallel.
 function watchAll() {
   return parallel(watchCss, watchCustomAssets)();
 }
 
+// Use DRUPAL_URL for Drush, or the shared Lando URL by default.
 function storyDrupalUrl() {
   return process.env.DRUPAL_URL || 'https://omd.lndo.site';
 }
 
+// npm storybook:compile/watchStories: generate JSON from Twig through Drush.
 function generateStories(done) {
   const drush = spawn(
     'lando',
@@ -110,6 +120,7 @@ function generateStories(done) {
     { stdio: 'inherit' }
   );
   let finished = false;
+  // Signal Gulp once whether the child errors or exits.
   const finish = (error) => {
     if (!finished) {
       finished = true;
@@ -123,6 +134,7 @@ function generateStories(done) {
   });
 }
 
+// npm storybook:watch-stories: regenerate JSON after Twig edits.
 function watchStories() {
   return watch(
     ['components/**/*.stories.twig', 'templates/**/*.stories.twig'],
@@ -131,20 +143,14 @@ function watchStories() {
   );
 }
 
-/**
- * Exports
- * Add as many as you need
- */
-
-exports.init = uswds.init;
-exports.compile = uswds.compile;
-exports.compileSass = uswds.compileSass;
-exports.compileComponentSass = compileComponentSass;
+// npm prod-build: refresh USWDS assets, copy custom assets, compile components.
 exports.prodBuild = series(
   uswds.updateUswds,
   copyCustomAssets,
   compileComponentSass
 );
+
+// Public tasks called by package.json scripts.
 exports.watchCss = watchCss;
 exports.watchAll = watchAll;
 exports.generateStories = generateStories;
