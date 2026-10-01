@@ -1,6 +1,9 @@
 /** @type { import('@storybook/server-webpack5').StorybookConfig } */
 const config = {
   stories: ['../components/**/*.stories.json', '../templates/**/*.stories.json'],
+  staticDirs: [
+    { from: '../assets', to: '/themes/custom/omd/assets' },
+  ],
   addons: [
     '@storybook/addon-webpack5-compiler-swc',
     '@storybook/addon-a11y',

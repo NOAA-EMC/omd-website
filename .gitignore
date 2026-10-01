@@ -43,3 +43,9 @@ yarn-error.log*
 storybook-static
 web/themes/custom/omd/**/*.stories.json
 web/themes/custom/omd/css/
+
+# Generated theme asset build output.
+/web/themes/custom/omd/assets/css/
+/web/themes/custom/omd/assets/js/
+/web/themes/custom/omd/assets/images/
+/web/themes/custom/omd/assets/uswds/
