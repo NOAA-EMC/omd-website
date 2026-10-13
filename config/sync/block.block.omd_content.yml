@@ -1,0 +1,22 @@
+uuid: e86ec6cc-e8b9-451b-9e92-ac7a8aaaa778
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - omd
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: omd_content
+theme: omd
+region: content
+weight: -5
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

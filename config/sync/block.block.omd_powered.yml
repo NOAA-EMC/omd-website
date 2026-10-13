@@ -1,0 +1,22 @@
+uuid: d652c7b9-f98e-49d2-9d27-feb61178ab87
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - omd
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: omd_powered
+theme: omd
+region: footer_secondary
+weight: -5
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }
