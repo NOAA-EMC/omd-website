@@ -1,0 +1,20 @@
+uuid: 8aeda6f3-31b3-4ad6-a61b-543047633721
+langcode: en
+status: true
+dependencies:
+  theme:
+    - omd
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: omd_page_title
+theme: omd
+region: content
+weight: -4
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: eb4cbcca-8697-438c-bcfd-4e1c95b455ea
+langcode: en
+status: true
+dependencies:
+  theme:
+    - omd
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: omd_primary_local_tasks
+theme: omd
+region: highlighted
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }
