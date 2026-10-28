@@ -924,8 +924,9 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 // $settings['config_sync_directory'] = '../config/sync';
 
 // 1. CLOUD.GOV ENVIRONMENT
-if (isset($_ENV['VCAP_SERVICES'])) {
-  $vcap = json_decode($_ENV['VCAP_SERVICES'], true);
+$vcap_services = getenv('VCAP_SERVICES');
+if ($vcap_services !== FALSE) {
+  $vcap = json_decode($vcap_services, true, 512, JSON_THROW_ON_ERROR);
 
   // Cloud.gov MySQL Database
   if (!empty($vcap['aws-rds'])) {
@@ -952,7 +953,7 @@ if (isset($_ENV['VCAP_SERVICES'])) {
   }
 } 
 // 2. LANDO LOCAL ENVIRONMENT
-elseif (isset($_ENV['LANDO_INFO'])) {
+elseif (getenv('LANDO_INFO') !== FALSE) {
   // Lando Default Database
   $databases['default']['default'] = [
     'database' => 'drupal11',

@@ -1,7 +1,7 @@
 {
   "WEBDIR": "web",
   "PHP_VERSION": "{PHP_83_LATEST}",
-  "WEB_SERVER": "nginx",
+  "WEB_SERVER": "httpd",
   "PHP_EXTENSIONS": [
     "bz2",
     "zlib",
