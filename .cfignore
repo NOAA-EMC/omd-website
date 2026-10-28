@@ -1,0 +1,33 @@
+# 1. Lando configuration (not needed on Cloud.gov)
+.lando.yml
+.lando/
+
+# 2. Composer dependencies (CF PHP buildpack will install these)
+/vendor/
+/web/core/
+/web/libraries/
+/web/modules/contrib/
+/web/profiles/contrib/
+/web/themes/contrib/
+/drush/Commands/contrib/
+
+# 3. Drupal site data and local overrides
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/*/settings.local.php
+/web/sites/*/services.local.yml
+
+# 4. Local environment, tooling, and DB dumps
+.env
+.env.*
+*.sql
+*.sql.gz
+*.sqlite
+*.dump
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+.idea/
+.vscode/
+.DS_Store
+*~
