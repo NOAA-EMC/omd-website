@@ -907,16 +907,64 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
-$databases['default']['default'] = array (
-  'database' => 'drupal11',
-  'username' => 'drupal11',
-  'password' => 'drupal11',
-  'prefix' => '',
-  'host' => 'database',
-  'port' => '3306',
-  'isolation_level' => 'READ COMMITTED',
-  'driver' => 'mysql',
-  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
-  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
-);
-$settings['config_sync_directory'] = '../config/sync';
+
+# DEFAULT DB CONFIGURATION
+// $databases['default']['default'] = array (
+//   'database' => 'drupal11',
+//   'username' => 'drupal11',
+//   'password' => 'drupal11',
+//   'prefix' => '',
+//   'host' => 'database',
+//   'port' => '3306',
+//   'isolation_level' => 'READ COMMITTED',
+//   'driver' => 'mysql',
+//   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+//   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
+// );
+// $settings['config_sync_directory'] = '../config/sync';
+
+// 1. CLOUD.GOV ENVIRONMENT
+if (isset($_ENV['VCAP_SERVICES'])) {
+  $vcap = json_decode($_ENV['VCAP_SERVICES'], true);
+
+  // Cloud.gov MySQL Database
+  if (!empty($vcap['aws-rds'])) {
+    $db = $vcap['aws-rds'][0]['credentials'];
+    $databases['default']['default'] = [
+      'database' => $db['db_name'],
+      'username' => $db['username'],
+      'password' => $db['password'],
+      'host' => $db['host'],
+      'port' => $db['port'],
+      'driver' => 'mysql',
+      'prefix' => '',
+    ];
+  }
+
+  // Cloud.gov S3 File System
+  if (!empty($vcap['s3'])) {
+    $s3 = $vcap['s3'][0]['credentials'];
+    $config['s3fs.settings']['bucket'] = $s3['bucket'];
+    $config['s3fs.settings']['region'] = $s3['region'];
+    $config['s3fs.settings']['use_instance_profile'] = FALSE;
+    $settings['s3fs.access_key'] = $s3['access_key_id'];
+    $settings['s3fs.secret_key'] = $s3['secret_access_key'];
+  }
+} 
+// 2. LANDO LOCAL ENVIRONMENT
+elseif (isset($_ENV['LANDO_INFO'])) {
+  // Lando Default Database
+  $databases['default']['default'] = [
+    'database' => 'drupal11',
+    'username' => 'drupal11',
+    'password' => 'drupal11',
+    'host' => 'database',
+    'port' => '3306',
+    'driver' => 'mysql',
+    'prefix' => '',
+  ];
+  
+  // Override s3fs locally to fall back to the local public file system
+  $config['s3fs.settings']['use_s3_for_public'] = FALSE;
+  $config['s3fs.settings']['use_s3_for_private'] = FALSE;
+}
