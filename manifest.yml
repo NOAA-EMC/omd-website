@@ -1,0 +1,9 @@
+---
+applications:
+  - name: omd-drupal
+    buildpacks:
+      - php_buildpack
+    memory: 512M
+    services:
+      - omd-drupal-db
+      - omd-drupal-s3
