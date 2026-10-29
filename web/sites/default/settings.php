@@ -921,7 +921,9 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 //   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
 //   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
 // );
-// $settings['config_sync_directory'] = '../config/sync';
+
+// CONFIGURATION SYNC DIRECTORY (drush cex/cim)
+$settings['config_sync_directory'] = '../config/sync';
 
 // 1. CLOUD.GOV ENVIRONMENT
 $vcap_services = getenv('VCAP_SERVICES');
