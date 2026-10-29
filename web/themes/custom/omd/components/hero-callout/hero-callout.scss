@@ -1,0 +1,55 @@
+@use "uswds-core" with (
+  $theme-image-path: "../../assets/uswds/img",
+  $theme-font-path: "../../assets/uswds/fonts",
+  $theme-show-notifications: false
+);
+
+.usa-hero.omd-hero-callout {
+  display: flex;
+  min-height: 23rem;
+  align-items: center;
+  background-color: #e7f1fc;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(242, 248, 255, 0.82) 0%,
+      rgba(242, 248, 255, 0.72) 50%,
+      rgba(242, 248, 255, 0.3) 68%,
+      rgba(242, 248, 255, 0) 84%
+    ),
+    url("./hero-callout-banner.svg");
+  background-position: center;
+  background-size: cover;
+}
+
+.usa-hero.omd-hero-callout > .grid-container {
+  width: 100%;
+  max-width: 53rem;
+}
+
+.usa-hero__callout.omd-hero-callout__content {
+  max-width: 32rem;
+  padding: 0;
+  background-color: transparent;
+  color: #1b3355;
+}
+
+.omd-hero-callout__content .usa-hero__heading {
+  max-width: 23rem;
+  color: #162f55;
+}
+
+@media (max-width: 40em) {
+  .usa-hero.omd-hero-callout {
+    min-height: 26rem;
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(242, 248, 255, 0.9) 0%,
+        rgba(242, 248, 255, 0.78) 58%,
+        rgba(242, 248, 255, 0.3) 100%
+      ),
+      url("./hero-callout-banner.svg");
+    background-position: 64% 50%;
+  }
+}
