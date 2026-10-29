@@ -1,55 +1,37 @@
-@use "uswds-core" with (
+@use "uswds-core" as * with (
   $theme-image-path: "../../assets/uswds/img",
   $theme-font-path: "../../assets/uswds/fonts",
   $theme-show-notifications: false
 );
 
 .usa-hero.omd-hero-callout {
-  display: flex;
+  @include u-display("flex");
   min-height: 23rem;
-  align-items: center;
+  @include u-align-items("align-center");
   background-color: #e7f1fc;
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(242, 248, 255, 0.82) 0%,
-      rgba(242, 248, 255, 0.72) 50%,
-      rgba(242, 248, 255, 0.3) 68%,
-      rgba(242, 248, 255, 0) 84%
-    ),
-    url("./hero-callout-banner.svg");
+  background-image: url("./hero-callout-banner.png");
   background-position: center;
   background-size: cover;
-}
 
-.usa-hero.omd-hero-callout > .grid-container {
-  width: 100%;
-  max-width: 53rem;
-}
+  > .grid-container {
+    @include u-width("full");
+    max-width: 53rem;
+  }
 
-.usa-hero__callout.omd-hero-callout__content {
-  max-width: 32rem;
-  padding: 0;
-  background-color: transparent;
-  color: #1b3355;
-}
+  .usa-hero__callout.omd-hero-callout__content {
+    max-width: 32rem;
+    @include u-padding(0);
+    @include u-bg("transparent");
+    color: #1b3355;
 
-.omd-hero-callout__content .usa-hero__heading {
-  max-width: 23rem;
-  color: #162f55;
-}
+    .usa-hero__heading {
+      max-width: 23rem;
+      color: #162f55;
+    }
+  }
 
-@media (max-width: 40em) {
-  .usa-hero.omd-hero-callout {
+  @include at-media-max("tablet") {
     min-height: 26rem;
-    background-image:
-      linear-gradient(
-        90deg,
-        rgba(242, 248, 255, 0.9) 0%,
-        rgba(242, 248, 255, 0.78) 58%,
-        rgba(242, 248, 255, 0.3) 100%
-      ),
-      url("./hero-callout-banner.svg");
     background-position: 64% 50%;
   }
 }
