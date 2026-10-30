@@ -1,0 +1,18 @@
+uuid: 888dc5a2-fd60-4e31-b10e-316b67f9c33c
+langcode: en
+status: false
+dependencies:
+  module:
+    - config_split
+id: main
+label: Main (production)
+description: 'Production environment configuration.'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/splits/main
+module: {  }
+theme: {  }
+complete_list: {  }
+partial_list: {  }

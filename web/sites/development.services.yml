@@ -15,6 +15,16 @@
 parameters:
   http.response.debug_cacheability_headers: true
   storybook.development: true
+  twig.config:
+    debug: true
+    auto_reload: true
+    cache: true
+    allowed_file_extensions:
+      - css
+      - html
+      - js
+      - svg
+      - twig
   cors.config:
     enabled: true
     allowedHeaders: ["Accept", "Content-Type"]

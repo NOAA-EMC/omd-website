@@ -730,7 +730,34 @@ $settings['update_free_access'] = FALSE;
  */
 $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
 
-if (getenv('LANDO') === 'ON') {
+$vcap_services = getenv('VCAP_SERVICES');
+$is_cloud_environment = $vcap_services !== FALSE;
+$drupal_environment = getenv('DRUPAL_ENV');
+
+if ($drupal_environment === FALSE || $drupal_environment === '') {
+  if ($is_cloud_environment) {
+    throw new \RuntimeException('FATAL ERROR: DRUPAL_ENV must be set on cloud.gov.');
+  }
+  $drupal_environment = 'local';
+}
+
+$valid_environments = ['local', 'dev', 'staging', 'main'];
+if (!in_array($drupal_environment, $valid_environments, TRUE)) {
+  throw new \RuntimeException(sprintf(
+    'FATAL ERROR: DRUPAL_ENV must be one of: %s.',
+    implode(', ', $valid_environments)
+  ));
+}
+
+if ($is_cloud_environment && $drupal_environment === 'local') {
+  throw new \RuntimeException('FATAL ERROR: DRUPAL_ENV=local is only valid outside cloud.gov.');
+}
+
+foreach ($valid_environments as $environment) {
+  $config['config_split.config_split.' . $environment]['status'] = $drupal_environment === $environment;
+}
+
+if ($drupal_environment === 'local') {
   $settings['container_yamls'][] = $app_root . '/sites/development.services.yml';
 }
 
@@ -926,7 +953,6 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 $settings['config_sync_directory'] = '../config/sync';
 
 // 1. CLOUD.GOV ENVIRONMENT
-$vcap_services = getenv('VCAP_SERVICES');
 if ($vcap_services !== FALSE) {
   $vcap = json_decode($vcap_services, true, 512, JSON_THROW_ON_ERROR);
 

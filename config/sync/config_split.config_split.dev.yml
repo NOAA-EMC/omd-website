@@ -1,0 +1,18 @@
+uuid: c63f9ef1-9126-44cb-9537-ce50706bad84
+langcode: en
+status: false
+dependencies:
+  module:
+    - config_split
+id: dev
+label: Development
+description: 'Development environment configuration.'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/splits/dev
+module: {  }
+theme: {  }
+complete_list: {  }
+partial_list: {  }

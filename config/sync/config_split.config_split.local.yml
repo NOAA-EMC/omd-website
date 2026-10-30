@@ -1,0 +1,18 @@
+uuid: 2f2cfa0f-5e64-4dd5-9d8b-8500d5f498c1
+langcode: en
+status: false
+dependencies:
+  module:
+    - config_split
+id: local
+label: Local
+description: 'Local development configuration.'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/splits/local
+module: {  }
+theme: {  }
+complete_list: {  }
+partial_list: {  }

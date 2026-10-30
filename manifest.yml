@@ -4,6 +4,8 @@ applications:
     buildpacks:
       - php_buildpack
     memory: 512M
+    env:
+      DRUPAL_ENV: main
     services:
       - omd-drupal-db
       - omd-drupal-s3
