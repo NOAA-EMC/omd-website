@@ -13,6 +13,27 @@ root. Cloud.gov provides the `omd-drupal-db` MySQL service and the
 
 The deployment uses PHP 8.3, PDO MySQL, and Apache HTTPD for Drupal clean URLs.
 
+### Environment configuration
+
+Drupal uses Config Split for `local`, `dev`, `staging`, and `main` environment
+overrides. The shared configuration remains in `config/sync`; environment
+overrides are stored under `config/splits/`.
+
+The `DRUPAL_ENV` environment variable selects the active split and must be one
+of `local`, `dev`, `staging`, or `main`. `local` is reserved for non-cloud
+development. The cloud.gov manifest defaults it to `main` (production). For a
+different deployment, set the value on that app and restage it, for example:
+
+```shell
+cf set-env omd-drupal DRUPAL_ENV staging
+cf restage omd-drupal
+```
+
+Outside cloud.gov, an unset `DRUPAL_ENV` defaults to `local`. Local
+configuration loads `development.services.yml`, which enables Twig debugging.
+Twig debugging stays disabled for `dev`, `staging`, and `main`. Drupal fails
+early if a cloud.gov app has no `DRUPAL_ENV` or the value is invalid.
+
 ### Deploy code
 
 ```shell
