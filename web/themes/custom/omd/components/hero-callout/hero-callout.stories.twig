@@ -1,0 +1,19 @@
+{% stories hero_callout with { title: 'OMD/Components/Hero Callout' } %}
+
+{% story with_cta with { name: 'With call to action' } %}
+{{ include('omd:hero-callout', {
+	heading: 'Office of Modeling and Development',
+	body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+	cta_label: 'Explore our work',
+	cta_url: '/about'
+}, false) }}
+{% endstory %}
+
+{% story without_cta with { name: 'Without call to action' } %}
+{{ include('omd:hero-callout', {
+	heading: 'Understanding our changing atmosphere',
+	body: 'Discover the science and modeling behind the forecasts that help protect life and property.'
+}, false) }}
+{% endstory %}
+
+{% endstories %}

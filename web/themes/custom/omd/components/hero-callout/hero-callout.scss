@@ -1,0 +1,37 @@
+@use "uswds-core" as * with (
+  $theme-image-path: "../../assets/uswds/img",
+  $theme-font-path: "../../assets/uswds/fonts",
+  $theme-show-notifications: false
+);
+
+.usa-hero.omd-hero-callout {
+  @include u-display("flex");
+  min-height: 23rem;
+  @include u-align-items("align-center");
+  background-color: #e7f1fc;
+  background-image: url("./hero-callout-banner.png");
+  background-position: center;
+  background-size: cover;
+
+  > .grid-container {
+    @include u-width("full");
+    max-width: 53rem;
+  }
+
+  .usa-hero__callout.omd-hero-callout__content {
+    max-width: 32rem;
+    @include u-padding(0);
+    @include u-bg("transparent");
+    color: #1b3355;
+
+    .usa-hero__heading {
+      max-width: 23rem;
+      color: #162f55;
+    }
+  }
+
+  @include at-media-max("tablet") {
+    min-height: 26rem;
+    background-position: 64% 50%;
+  }
+}

@@ -1,0 +1,19 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Hero callout
+description: USWDS hero with an abstract weather banner and optional call to action.
+status: stable
+props:
+  type: object
+  properties:
+    heading:
+      type: string
+      title: Heading
+    body:
+      type: string
+      title: Body copy
+    cta_label:
+      type: string
+      title: Call-to-action label
+    cta_url:
+      type: string
+      title: Call-to-action URL
