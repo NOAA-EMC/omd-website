@@ -1,0 +1,10 @@
+@use "sass:list";
+@use "sass:string";
+
+@mixin u-object-fit($fit) {
+  @if not list.index((fill, contain, cover, none, scale-down), $fit) {
+    @error "Unsupported object-fit value `#{$fit}`.";
+  }
+
+  object-fit: string.unquote($fit);
+}
