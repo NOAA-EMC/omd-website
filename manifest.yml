@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: omd-drupal
+  - name: omd
     buildpacks:
       - php_buildpack
     memory: 512M
