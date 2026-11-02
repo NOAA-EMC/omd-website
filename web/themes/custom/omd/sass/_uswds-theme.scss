@@ -11,5 +11,12 @@ in the form $setting: value,
 @use "uswds-core" with (
   $theme-image-path: "../uswds/img",
   $theme-font-path: "../uswds/fonts",
-  $theme-show-notifications: false
+  $theme-show-notifications: false,
+  // Container Max Width Settings
+  $theme-banner-max-width: "widescreen",
+  $theme-grid-container-max-width: "widescreen",
+  $theme-header-max-width: "widescreen",
+  $theme-footer-max-width: "widescreen",
+  // Hero Settings
+  $theme-hero-image: false
 );
