@@ -27,6 +27,11 @@ function componentDirectories() {
     .map((entry) => path.join(componentPath, entry.name));
 }
 
+function sassImportPath(from, to) {
+  const importPath = path.relative(from, to).split(path.sep).join('/');
+  return importPath.startsWith('.') ? importPath : `./${importPath}`;
+}
+
 // Compile with temporary USWDS paths, then restore the shared compiler config.
 function compileSassAt(themePath, cssPath) {
   const originalThemePath = uswds.paths.dist.theme;
@@ -50,11 +55,35 @@ function compileSassAt(themePath, cssPath) {
 // build/watchCss: compile non-partial component Sass beside its SDC.
 async function compileComponentSass() {
   for (const directory of componentDirectories()) {
-    const hasEntryPoint = fs
+    const entryPoints = fs
       .readdirSync(directory)
-      .some((file) => file.endsWith('.scss') && !file.startsWith('_'));
-    if (hasEntryPoint) {
-      await compileSassAt(directory, directory);
+      .filter((file) => file.endsWith('.scss') && !file.startsWith('_'));
+    if (entryPoints.length === 0) {
+      continue;
+    }
+
+    const buildDirectory = fs.mkdtempSync(
+      path.join(directory, '.omd-sass-build-')
+    );
+    try {
+      for (const entryPoint of entryPoints) {
+        const componentPathWithoutExtension = path.resolve(
+          directory,
+          path.basename(entryPoint, '.scss')
+        );
+        const themePath = path.resolve('./sass/uswds-theme');
+        const wrapper = [
+          `@use "${sassImportPath(buildDirectory, themePath)}";`,
+          `@use "${sassImportPath(buildDirectory, componentPathWithoutExtension)}";`,
+          '',
+        ].join('\n');
+
+        fs.writeFileSync(path.join(buildDirectory, entryPoint), wrapper);
+      }
+
+      await compileSassAt(buildDirectory, directory);
+    } finally {
+      fs.rmSync(buildDirectory, { recursive: true, force: true });
     }
   }
 }

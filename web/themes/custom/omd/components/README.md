@@ -14,15 +14,26 @@ components/
 
 The component is available to Twig as `omd:alert`. Non-partial `.scss`
 entrypoints compile to CSS beside the component; underscore-prefixed Sass files
-are treated as partials. Component CSS should use the same USWDS v3 compiler
-configuration as the theme. When generating USWDS image or font URLs, paths are
-relative to the component directory, for example:
+are treated as partials. The Gulp build loads the project's configured
+`sass/_uswds-theme.scss` before compiling each component entrypoint, so each
+component only needs the standard USWDS core import:
 
 ```scss
-@use "uswds-core" with (
-  $theme-image-path: "../../assets/uswds/img",
-  $theme-font-path: "../../assets/uswds/fonts"
-);
+@use "uswds-core" as *;
+```
+
+Do not repeat project settings with `with (...)` in component Sass. The
+configured USWDS settings are shared with the theme. If a component uses USWDS
+image or font URLs, verify that the configured paths resolve relative to the
+component CSS output.
+
+Import `sass/custom_mixins` when using a project-specific mixin; custom Sass
+mixins are separate from `uswds-core`. For example:
+
+```scss
+@use "../../sass/custom_mixins" as *;
+
+@include u-object-fit("cover");
 ```
 
 Keep `.stories.twig` as the editable story source. Generate the adjacent,
