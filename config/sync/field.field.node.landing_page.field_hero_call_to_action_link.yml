@@ -1,0 +1,23 @@
+uuid: eab4faf1-d169-4cbf-8415-e52f43cb2897
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero_call_to_action_link
+    - node.type.landing_page
+  module:
+    - link
+id: node.landing_page.field_hero_call_to_action_link
+field_name: field_hero_call_to_action_link
+entity_type: node
+bundle: landing_page
+label: 'Hero Call To Action Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link
