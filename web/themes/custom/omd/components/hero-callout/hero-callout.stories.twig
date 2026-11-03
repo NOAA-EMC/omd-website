@@ -2,17 +2,17 @@
 
 {% story with_cta with { name: 'With call to action' } %}
 {{ include('omd:hero-callout', {
-	heading: 'Office of Modeling and Development',
-	body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-	cta_label: 'Explore our work',
-	cta_url: '/about'
+  hero_heading: 'Office of Modeling and Development',
+  hero_body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  call_to_action_label: 'Explore our work',
+  call_to_action_url: '/about'
 }, false) }}
 {% endstory %}
 
 {% story without_cta with { name: 'Without call to action' } %}
 {{ include('omd:hero-callout', {
-	heading: 'Understanding our changing atmosphere',
-	body: 'Discover the science and modeling behind the forecasts that help protect life and property.'
+  hero_heading: 'Understanding our changing atmosphere',
+  hero_body: 'Discover the science and modeling behind the forecasts that help protect life and property.'
 }, false) }}
 {% endstory %}
 
