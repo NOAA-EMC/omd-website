@@ -1,6 +1,6 @@
 uuid: eb4cbcca-8697-438c-bcfd-4e1c95b455ea
 langcode: en
-status: true
+status: false
 dependencies:
   theme:
     - omd
