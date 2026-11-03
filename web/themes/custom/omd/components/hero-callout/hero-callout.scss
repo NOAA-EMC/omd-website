@@ -1,37 +1,41 @@
-@use "uswds-core" as * with (
-  $theme-image-path: "../../assets/uswds/img",
-  $theme-font-path: "../../assets/uswds/fonts",
-  $theme-show-notifications: false
-);
+@use "uswds-core" as *;
+@use "../../sass/custom_mixins" as *;
 
-.usa-hero.omd-hero-callout {
+.usa-hero {
+  @include u-position("relative");
   @include u-display("flex");
-  min-height: 23rem;
   @include u-align-items("align-center");
-  background-color: #e7f1fc;
-  background-image: url("./hero-callout-banner.png");
-  background-position: center;
-  background-size: cover;
+  @include u-overflow("hidden");
+  @include u-width(override, 100vw);
+  @include u-margin-x(override, calc(50% - 50vw));
+  @include u-height(override, 30rem);
 
-  > .grid-container {
-    @include u-width("full");
-    max-width: 53rem;
-  }
+  .usa-hero__media {
+    @include u-position("absolute");
+    inset: 0;
 
-  .usa-hero__callout.omd-hero-callout__content {
-    max-width: 32rem;
-    @include u-padding(0);
-    @include u-bg("transparent");
-    color: #1b3355;
-
-    .usa-hero__heading {
-      max-width: 23rem;
-      color: #162f55;
+    img {
+      @include u-display("block");
+      @include u-width("full");
+      @include u-height("full");
+      @include u-object-fit("cover");
     }
   }
 
-  @include at-media-max("tablet") {
-    min-height: 26rem;
-    background-position: 64% 50%;
+  .usa-hero__wrapper {
+    @include u-position("relative");
+    @include u-width("full");
+  }
+
+  .usa-hero__callout {
+    @include u-maxw(tablet);
+    @include u-padding(0);
+    @include u-bg("transparent");
+    @include u-color("primary-darker");
+  }
+
+  .usa-hero__heading {
+    @include u-maxw(mobile);
+    @include u-color("primary-darker");
   }
 }
