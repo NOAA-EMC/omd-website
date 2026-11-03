@@ -1,0 +1,35 @@
+{% set heading = heading|default('') %}
+{% set body = body|default('') %}
+{% set image_src = image_src|default('') %}
+{% set image_alt = image_alt|default('') %}
+{% set link_label = link_label|default('') %}
+{% set link_url = link_url|default('') %}
+{% set card_variant = card_variant|default('standard') %}
+{% set class = class|default('') %}
+
+<li class="usa-card{% if class %} {{ class }}{% endif %}{% if card_variant == 'header-first' %} usa-card--header-first{% elseif card_variant == 'flag-left' or card_variant == 'flag-right' %} usa-card--flag{% endif %}{% if card_variant == 'flag-right' %} usa-card--media-right{% endif %}">
+	<div class="usa-card__container">
+		{% if heading %}
+			<div class="usa-card__header">
+				<h2 class="usa-card__heading">{{ heading }}</h2>
+			</div>
+		{% endif %}
+		{% if image_src %}
+			<div class="usa-card__media">
+				<div class="usa-card__img">
+					<img src="{{ image_src }}" alt="{{ image_alt }}">
+				</div>
+			</div>
+		{% endif %}
+		{% if body %}
+			<div class="usa-card__body">
+				<p>{{ body }}</p>
+			</div>
+		{% endif %}
+		{% if link_label and link_url %}
+			<div class="usa-card__footer">
+				<a class="usa-button" href="{{ link_url }}">{{ link_label }}</a>
+			</div>
+		{% endif %}
+	</div>
+</li>

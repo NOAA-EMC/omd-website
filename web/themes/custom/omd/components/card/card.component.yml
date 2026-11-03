@@ -1,0 +1,43 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Card
+description: USWDS card for linking to OMD forecasts, guidance, and research.
+status: stable
+props:
+  type: object
+  properties:
+    heading:
+      type: string
+      title: Heading
+    body:
+      type: string
+      title: Body
+    image_src:
+      type: string
+      title: Image URL
+      description: URL of an optional card image.
+    image_alt:
+      type: string
+      title: Image alternative text
+    link_label:
+      type: string
+      title: Link label
+    link_url:
+      type: string
+      title: Link URL
+    class:
+      type: string
+      title: Layout classes
+      description: Optional USWDS grid classes, such as desktop:grid-col-4.
+    card_variant:
+      type: string
+      title: Card variant
+      enum:
+        - standard
+        - header-first
+        - flag-left
+        - flag-right
+      meta:enum:
+        standard: Standard
+        header-first: Header first
+        flag-left: Flag with media on left
+        flag-right: Flag with media on right
