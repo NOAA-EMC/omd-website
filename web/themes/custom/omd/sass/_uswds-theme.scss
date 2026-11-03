@@ -16,6 +16,15 @@ in the form $setting: value,
   $theme-font-path: "../uswds/fonts",
   $theme-show-notifications: false,
   // ========================================
+  // Header Settings
+  // ========================================
+  $theme-header-logo-text-width: 50%,
+  // $theme-header-min-width
+  // ========================================
+  // Navigation Settings
+  // ========================================
+  $theme-megamenu-columns: 4,
+  // ========================================
   // Container Max Width Settings
   // ========================================
   $theme-banner-max-width: "widescreen",

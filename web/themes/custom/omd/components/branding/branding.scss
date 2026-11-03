@@ -1,0 +1,24 @@
+@use "uswds-core" as *;
+
+.usa-logo.site-logo {
+  @include u-display("flex");
+  @include u-align-items("align-center");
+
+  .logo-img {
+    @include u-margin-right(2);
+
+    img {
+      @include u-display("block");
+      @include u-width("auto");
+      @include u-height(3);
+
+      @include at-media("tablet") {
+        @include u-height(5);
+      }
+
+      @include at-media("desktop") {
+        @include u-height(7);
+      }
+    }
+  }
+}

@@ -5,10 +5,12 @@ dependencies:
   config:
     - field.field.node.landing_page.field_hero_body
     - field.field.node.landing_page.field_hero_call_to_action
+    - field.field.node.landing_page.field_hero_call_to_action_link
     - field.field.node.landing_page.field_hero_heading
     - field.field.node.landing_page.field_hero_image
     - node.type.landing_page
   module:
+    - link
     - media_library
 id: node.landing_page.default
 targetEntityType: node
@@ -17,7 +19,7 @@ mode: default
 content:
   field_hero_body:
     type: string_textfield
-    weight: 26
+    weight: 5
     region: content
     settings:
       size: 60
@@ -30,6 +32,14 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_hero_call_to_action_link:
+    type: link_default
+    weight: 4
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_hero_heading:
     type: string_textfield

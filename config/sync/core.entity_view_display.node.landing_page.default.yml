@@ -5,10 +5,12 @@ dependencies:
   config:
     - field.field.node.landing_page.field_hero_body
     - field.field.node.landing_page.field_hero_call_to_action
+    - field.field.node.landing_page.field_hero_call_to_action_link
     - field.field.node.landing_page.field_hero_heading
     - field.field.node.landing_page.field_hero_image
     - node.type.landing_page
   module:
+    - link
     - user
 id: node.landing_page.default
 targetEntityType: node
@@ -17,7 +19,7 @@ mode: default
 content:
   field_hero_body:
     type: string
-    label: above
+    label: visually_hidden
     settings:
       link_to_entity: false
       link_rel: canonical
@@ -32,6 +34,18 @@ content:
       link_rel: canonical
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_hero_call_to_action_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
     region: content
   field_hero_heading:
     type: string
