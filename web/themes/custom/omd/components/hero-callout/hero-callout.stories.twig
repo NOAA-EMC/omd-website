@@ -4,6 +4,7 @@
 {{ include('omd:hero-callout', {
   hero_heading: 'Office of Modeling and Development',
   hero_body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  hero_image_uri: 'themes/custom/omd/assets/images/hero-callout-banner.png',
   call_to_action_label: 'Explore our work',
   call_to_action_url: '/about'
 }, false) }}
@@ -12,7 +13,8 @@
 {% story without_cta with { name: 'Without call to action' } %}
 {{ include('omd:hero-callout', {
   hero_heading: 'Understanding our changing atmosphere',
-  hero_body: 'Discover the science and modeling behind the forecasts that help protect life and property.'
+  hero_body: 'Discover the science and modeling behind the forecasts that help protect life and property.',
+  hero_image_uri: 'themes/custom/omd/assets/images/hero-callout-banner.png'
 }, false) }}
 {% endstory %}
 
