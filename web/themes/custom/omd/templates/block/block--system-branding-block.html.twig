@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Site branding block rendered through the omd:branding component.
+ *
+ * Available variables:
+ * - site_logo: Logo for site as defined in Appearance or theme settings.
+ * - site_name: Name for site as defined in Site information settings.
+ * - site_slogan: Slogan for site as defined in Site information settings.
+ */
+#}
+{{ include('omd:branding', {
+  site_logo: site_logo,
+  site_name: site_name,
+  site_slogan: site_slogan,
+  home_url: path('<front>')
+}, with_context = false) }}
+<button class="usa-menu-btn" type="button">{{ 'Menu'|t }}</button>

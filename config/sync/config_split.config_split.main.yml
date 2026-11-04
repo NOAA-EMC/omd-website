@@ -5,7 +5,7 @@ dependencies:
   module:
     - config_split
 id: main
-label: Main (production)
+label: 'Main (production)'
 description: 'Production environment configuration.'
 weight: 0
 stackable: false

@@ -1,5 +1,5 @@
 @use "uswds-core" as *;
-@use "../../sass/custom_mixins" as *;
+@use "../../sass/tools/custom_mixins" as *;
 
 .usa-hero {
   @include u-position("relative");

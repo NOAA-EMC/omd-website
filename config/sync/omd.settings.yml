@@ -14,12 +14,12 @@ cdn_custom_css_min: ''
 cdn_custom_js: ''
 cdn_custom_js_min: ''
 uswds_header_style: extended
-uswds_header_mega: 1
+uswds_header_mega: 0
 uswds_header_mega_display_second: 0
 uswds_government_banner: 1
 uswds_footer_style: slim
-uswds_footer_agency: 0
-uswds_footer_agency_name: ''
+uswds_footer_agency: 1
+uswds_footer_agency_name: 'NOAA - Office of Modeling and Development'
 uswds_footer_agency_url: ''
 uswds_footer_agency_logo: ''
 uswds_contact_center: ''

@@ -1,0 +1,16 @@
+{% stories branding with { title: 'OMD/Components/Branding' } %}
+
+{% story default with { name: 'Logo and site name' } %}
+{{ include('omd:branding', {
+  site_logo: '/themes/custom/omd/assets/noaa_logo.svg',
+  site_name: 'Office of Modeling and Development'
+}, false) }}
+{% endstory %}
+
+{% story name_only with { name: 'Site name only' } %}
+{{ include('omd:branding', {
+  site_name: 'Office of Modeling and Development'
+}, false) }}
+{% endstory %}
+
+{% endstories %}

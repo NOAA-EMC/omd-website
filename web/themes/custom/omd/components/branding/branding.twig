@@ -1,0 +1,17 @@
+{% set home_url = home_url|default('/') %}
+
+<div class="usa-logo site-logo" id="logo">
+	{% if site_logo %}
+		<a class="logo-img" href="{{ home_url }}" accesskey="1" title="{{ 'Home'|t }}" aria-label="{{ 'Home'|t }}">
+			<img src="{{ site_logo }}" alt="{{ 'Home'|t }}">
+		</a>
+	{% endif %}
+	<em class="usa-logo__text">
+		{% if site_name %}
+			<a href="{{ home_url }}" accesskey="2" title="{{ 'Home'|t }}" aria-label="{{ 'Home'|t }}">{{ site_name }}</a>
+		{% endif %}
+		{% if site_slogan %}
+			<h2 class="usa-font-lead">{{ site_slogan }}</h2>
+		{% endif %}
+	</em>
+</div>

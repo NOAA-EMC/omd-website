@@ -5,7 +5,7 @@ name: "OMD"
 description: "Uses the USWDS Base and requires download of the USWDS assets"
 package: "USWDS Base"
 core_version_requirement: ^10 || ^11
-logo: "logo.png"
+logo: "assets/noaa_logo.svg"
 screenshot: "screenshot.png"
 
 regions:
