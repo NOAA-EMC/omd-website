@@ -3,8 +3,14 @@
 {% set hero_body = hero_body|default('') %}
 {% set call_to_action_label = call_to_action_label|default('') %}
 {% set call_to_action_url = call_to_action_url|default('') %}
+{% set variant = variant|default('default') %}
 
-<section class="usa-hero" aria-label="{{ hero_heading }}">
+{% set section_classes = 'usa-hero' %}
+{% if variant == 'contained' %}
+	{% set section_classes = section_classes ~ ' usa-hero--contained' %}
+{% endif %}
+
+<section class="{{ section_classes }}" aria-label="{{ hero_heading }}">
 	{% if hero_image_uri %}
 		<div class="usa-hero__media" aria-hidden="true">
 			<img src="{{ file_url(hero_image_uri) }}" alt="" fetchpriority="high">
