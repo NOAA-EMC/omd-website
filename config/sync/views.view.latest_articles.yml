@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - node.type.article
   module:
+    - datetime
     - node
     - user
 id: latest_articles
@@ -23,7 +24,7 @@ display:
     position: 0
     display_options:
       title: 'Latest Articles'
-      fields: { }
+      fields: {  }
       pager:
         type: some
         options:
@@ -45,8 +46,8 @@ display:
           perm: 'access content'
       cache:
         type: tag
-        options: { }
-      empty: { }
+        options: {  }
+      empty: {  }
       sorts:
         field_publication_date_value:
           id: field_publication_date_value
@@ -62,7 +63,7 @@ display:
             field_identifier: field_publication_date_value
           exposed: false
           granularity: second
-      arguments: { }
+      arguments: {  }
       filters:
         status:
           id: status
@@ -106,7 +107,7 @@ display:
             use_operator: false
             operator: ''
             operator_limit_selection: false
-            operator_list: { }
+            operator_list: {  }
             identifier: ''
             required: false
             remember: false
@@ -124,15 +125,17 @@ display:
             multiple: false
             remember: false
             default_group: All
-            default_group_multiple: { }
-            group_items: { }
+            default_group_multiple: {  }
+            group_items: {  }
       style:
-        type: default
+        type: html_list
         options:
-          grouping: { }
-          row_class: ''
+          row_class: 'usa-card usa-card-group-item'
           default_row_class: false
           uses_fields: false
+          type: ul
+          wrapper_class: ''
+          class: usa-card-group
       row:
         type: 'entity:node'
         options:
@@ -144,17 +147,15 @@ display:
           disable_sql_rewrite: false
           distinct: false
           replica: false
-          query_tags: { }
-      relationships: { }
-      css_class: dynamic-content-card-grid
-      header: { }
-      footer: { }
-      display_extenders: { }
+          query_tags: {  }
+      relationships: {  }
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
-      tags: { }
+      tags: {  }

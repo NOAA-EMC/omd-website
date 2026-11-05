@@ -11,16 +11,13 @@
 {% set card_classes = [
     'usa-card',
     class,
-    card_variant == 'card-group' ? 'card-grid-item' : '',
     card_variant == 'header-first' ? 'usa-card--header-first' : '',
     card_variant in ['flag-left', 'flag-right'] ? 'usa-card--flag' : '',
     card_variant == 'flag-right' ? 'usa-card--media-right' : ''
 ]|filter(v => v is not empty)|join(' ') %}
 
-{# Render card wrapper #}
-{% if card_variant == 'card-group' %}
-  <div class="{{ card_classes }}">
-{% else %}
+{# Views owns the outer list item for cards rendered in a card group. #}
+{% if card_variant != 'card-group' %}
   <li class="{{ card_classes }}">
 {% endif %}
 
@@ -52,8 +49,6 @@
 		{% endif %}
 	</div>
 
-  {% if card_variant == 'card-group' %}
-  </div>
-{% else %}
+{% if card_variant != 'card-group' %}
   </li>
 {% endif %}

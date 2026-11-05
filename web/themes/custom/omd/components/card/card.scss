@@ -1,7 +1,13 @@
 @use "uswds-core" as *;
 
 .usa-card {
-  &.card-grid-item {
+  img {
+    @include add-aspect("4x3");
+  }
+}
+
+.usa-card-group {
+  .usa-card-group-item {
     @include at-media("tablet") {
       @include grid-col(6);
     }

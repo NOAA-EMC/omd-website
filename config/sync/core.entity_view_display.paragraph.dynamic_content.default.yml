@@ -19,7 +19,7 @@ content:
     settings:
       plugin_types:
         default: default
-    third_party_settings: { }
+    third_party_settings: {  }
     weight: 1
     region: content
   field_section_heading:
@@ -28,7 +28,7 @@ content:
     settings:
       link_to_entity: false
       link_rel: canonical
-    third_party_settings: { }
+    third_party_settings: {  }
     weight: 0
     region: content
-hidden: { }
+hidden: {  }
