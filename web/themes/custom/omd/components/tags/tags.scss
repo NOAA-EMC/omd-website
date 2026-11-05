@@ -1,12 +1,13 @@
 @use "uswds-core" as *;
 
-.article-tags {
-  @include u-margin-top(4);
-  @include u-padding-top(2);
-  @include u-border-top(2px, "solid", "base-lighter");
-
-  .article-tags-label {
+.tags {
+  .tags-label {
     @include u-text("bold");
     @include u-color("base-dark");
+  }
+  .usa-tag {
+    @include u-margin(2px);
+    @include u-padding(2px);
+    @include u-bg("primary");
   }
 }

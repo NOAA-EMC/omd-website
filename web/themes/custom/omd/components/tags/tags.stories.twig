@@ -8,7 +8,10 @@
     <li><a href="/taxonomy/term/3">Model development</a></li>
   </ul>
 {% endset %}
-{{ include('omd:tags', { tags: rendered_tags }, false) }}
+{{ include('omd:tags', {
+  tags: rendered_tags,
+  label: 'Related topics'
+}, false) }}
 {% endstory %}
 
 {% endstories %}

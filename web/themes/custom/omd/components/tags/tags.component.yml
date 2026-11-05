@@ -11,3 +11,7 @@ props:
         - string
       title: Rendered tags
       description: Drupal render array or captured markup containing linked tag terms.
+    label:
+      type: string
+      title: Tags label
+      default: Tags
