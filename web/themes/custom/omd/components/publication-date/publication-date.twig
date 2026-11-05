@@ -1,0 +1,9 @@
+{% set date = date|default(null) %}
+{% set label = label|default('Published') %}
+
+{% if date|render %}
+  <div class="publication-date">
+    <span>{{ label }}: </span>
+    {{ date }}
+  </div>
+{% endif %}

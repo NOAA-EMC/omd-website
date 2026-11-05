@@ -1,0 +1,7 @@
+@use "uswds-core" as *;
+
+.publication-date {
+  @include u-font("sans", "xs");
+  @include u-color("base-dark");
+  margin-bottom: units(2);
+}
