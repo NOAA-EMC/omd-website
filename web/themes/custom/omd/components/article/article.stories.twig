@@ -1,0 +1,38 @@
+{% stories article with { title: 'OMD/Content/Article' } %}
+
+{% story full_article with { name: 'Full article' } %}
+{% set article_sections %}
+  <div class="article-sections">
+    <section class="paragraph paragraph--type--section">
+      <h2>Forecast guidance</h2>
+      <p>Current guidance highlights a developing low-pressure system moving across the region.</p>
+    </section>
+    <section class="paragraph paragraph--type--section">
+      <h2>Model assessment</h2>
+      <p>Ensemble agreement is improving, though uncertainty remains in the timing and track.</p>
+      <p>Forecasters should continue monitoring updates as additional observations become available.</p>
+    </section>
+  </div>
+{% endset %}
+
+{% set article_tags %}
+  <ul class="links">
+    <li><a href="/taxonomy/term/1">Forecast guidance</a></li>
+    <li><a href="/taxonomy/term/2">Severe weather</a></li>
+    <li><a href="/taxonomy/term/3">Model development</a></li>
+  </ul>
+{% endset %}
+
+{{ include('omd:article', {
+  article_title: 'Understanding the latest forecast guidance',
+  article_hero_image_uri: 'themes/custom/omd/assets/images/hero-callout-banner.png',
+  article_publication_date: 'November 5, 2026',
+  article_topic: 'Forecast operations',
+  article_summary: 'A review of current model guidance, forecast confidence, and the factors forecasters are monitoring.',
+  article_author: 'Office of Modeling and Development',
+  article_sections: article_sections,
+  article_tags: article_tags
+}, false) }}
+{% endstory %}
+
+{% endstories %}

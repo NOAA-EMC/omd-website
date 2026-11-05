@@ -1,0 +1,42 @@
+@use "uswds-core" as *;
+
+.article {
+  .article-content {
+    @include u-maxw("widescreen");
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .article-date {
+    @include u-font("sans", "xs");
+    @include u-color("base-dark");
+    margin-bottom: units(2);
+  }
+
+  .article-topic {
+    @include u-font("sans", "xs");
+    @include u-color("base-dark");
+    margin-bottom: units(1);
+    text-transform: uppercase;
+  }
+
+  .article-title {
+    @include u-color("primary-darker");
+    @include u-margin-top(1);
+  }
+
+  .article-summary {
+    @include u-font("sans", "md");
+    margin-bottom: units(4);
+  }
+
+  .article-author {
+    @include u-display("flex");
+    @include u-font("sans", "xs");
+    @include u-color("base-dark");
+    gap: units(2);
+    border-bottom: 1px solid color("base-lighter");
+    margin-bottom: units(4);
+    padding-bottom: units(2);
+  }
+}
