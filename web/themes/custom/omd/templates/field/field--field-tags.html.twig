@@ -38,9 +38,7 @@
 #}
 
 {% for item in items %}
-  <span class="margin-2px">
-    <a href="{{ item.content['#url'] }}" class="usa-tag">
-      {{ item.content['#title'] }}
-    </a>
-  </span>
+  <a href="{{ item.content['#url'] }}" class="usa-tag">
+    {{ item.content['#title'] }}
+  </a>
 {% endfor %}

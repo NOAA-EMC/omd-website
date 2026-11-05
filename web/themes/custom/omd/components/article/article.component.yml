@@ -16,11 +16,6 @@ props:
         - object
         - string
       title: Publication date
-    article_topic:
-      type:
-        - object
-        - string
-      title: Topic
     article_summary:
       type:
         - object
@@ -41,6 +36,10 @@ props:
         - object
         - string
       title: Tags
+    article_tags_label:
+      type: string
+      title: Tags label
+      default: Tags
     article_classes:
       type: array
       title: Article classes

@@ -87,12 +87,12 @@
 {% set article_hero_image_uri = hero_file ? hero_file.uri.value : null %}
 
 {# Renderable Field Content #}
-{% set article_topic = content.field_topic %}
 {% set article_summary = content.field_summary %}
 {% set article_pub_date = content.field_publication_date %}
 {% set article_author = content.field_author %}
 {% set article_sections = content.field_sections %}
 {% set article_tags = content.field_tags %}
+{% set article_tags_label = content.field_tags['#title']|default('Tags') %}
 
 {# Base CSS Classes #}
 {% set article_classes = [
@@ -110,15 +110,14 @@
   article_title: article_title,
   article_hero_image_uri: article_hero_image_uri,
   article_publication_date: article_pub_date,
-  article_topic: article_topic,
   article_summary: article_summary,
   article_author: article_author,
   article_sections: article_sections,
   article_tags: article_tags,
+  article_tags_label: article_tags_label,
   article_classes: article_classes,
   remaining_content: content|without(
     'field_hero_image',
-    'field_topic',
     'field_summary',
     'field_author',
     'field_publication_date',
