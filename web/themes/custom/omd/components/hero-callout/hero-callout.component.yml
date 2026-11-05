@@ -29,5 +29,4 @@ props:
         - default
         - contained
       default: default
-slots: {}
 
