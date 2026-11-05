@@ -1,0 +1,14 @@
+{% stories paragraph_section with { title: 'OMD/Components/Paragraph Section' } %}
+
+{% story default with { name: 'Section' } %}
+{% set section_text %}
+  <p>Ensemble agreement is improving, though uncertainty remains in the timing and track.</p>
+  <p>Forecasters should continue monitoring updates as additional observations become available.</p>
+{% endset %}
+{{ include('omd:paragraph-section', {
+  heading: 'Model assessment',
+  text: section_text
+}, false) }}
+{% endstory %}
+
+{% endstories %}

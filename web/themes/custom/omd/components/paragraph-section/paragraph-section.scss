@@ -1,0 +1,5 @@
+@use "uswds-core" as *;
+
+.paragraph-section {
+  @include u-margin-bottom(2);
+}

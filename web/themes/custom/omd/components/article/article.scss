@@ -28,4 +28,11 @@
   .article-publication-date {
     @include u-margin-bottom(1);
   }
+
+  .article-sections {
+    /* prettier-ignore */
+    h2, h3, h4, h5, h6 {
+      @include u-color("primary-dark");
+    }
+  }
 }

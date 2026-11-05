@@ -58,7 +58,11 @@
       </div>
     {% endif %}
 
-    {{ article_sections }}
+    {% if article_sections %}
+      <div class="article-sections">
+        {{ article_sections }}
+      </div>
+    {% endif %}
 
     {{ remaining_content }}
   </div>

@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override for the section paragraph.
+ *
+ * @see paragraph.html.twig
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+{{ include('omd:paragraph-section', {
+  heading: content.field_section_heading,
+  text: content.field_section_text,
+  classes: classes
+}, false) }}
