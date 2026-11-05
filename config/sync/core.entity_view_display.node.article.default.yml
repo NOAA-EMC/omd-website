@@ -10,11 +10,11 @@ dependencies:
     - field.field.node.article.field_sections
     - field.field.node.article.field_summary
     - field.field.node.article.field_tags
-    - field.field.node.article.field_topic
     - node.type.article
   module:
     - datetime
     - entity_reference_revisions
+    - nomarkup
     - user
 id: node.article.default
 targetEntityType: node
@@ -36,7 +36,11 @@ content:
     settings:
       view_mode: default
       link: false
-    third_party_settings: {  }
+    third_party_settings:
+      nomarkup:
+        enabled: false
+        separator: '|'
+        referenced_entity: '0'
     weight: 0
     region: content
   field_publication_date:
@@ -73,14 +77,6 @@ content:
       link: true
     third_party_settings: {  }
     weight: 5
-    region: content
-  field_topic:
-    type: entity_reference_label
-    label: visually_hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 4
     region: content
 hidden:
   body: true

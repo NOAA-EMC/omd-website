@@ -10,7 +10,7 @@ id: node.article.field_tags
 field_name: field_tags
 entity_type: node
 bundle: article
-label: Tags
+label: Topics
 description: 'Add tags to group articles with similar topics.'
 required: false
 translatable: false
