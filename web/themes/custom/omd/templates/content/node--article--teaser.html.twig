@@ -1,0 +1,13 @@
+{# Article rows in the Latest Articles View use the card-group item variant. #}
+{% set image_media = node.field_hero_image.entity ?? null %}
+{% set image_file = image_media ? image_media.field_media_image.entity : null %}
+
+{{ include('omd:card', {
+  card_variant: 'card-group',
+  heading: label,
+  body: node.field_summary.value|default(''),
+  link_label: 'Read more',
+  link_url: path('entity.node.canonical', {'node': node.id}),
+  image_src: image_file ? file_url(image_file.uri.value) : '',
+  image_alt: image_media and image_media.field_media_image.alt ? image_media.field_media_image.alt : '',
+}, false) }}

@@ -36,8 +36,10 @@ props:
         - header-first
         - flag-left
         - flag-right
+        - card-group
       meta:enum:
         standard: Standard
         header-first: Header first
         flag-left: Flag with media on left
         flag-right: Flag with media on right
+        card-group: Card group item

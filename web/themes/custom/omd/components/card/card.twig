@@ -7,13 +7,30 @@
 {% set card_variant = card_variant|default('standard') %}
 {% set class = class|default('') %}
 
-<li class="usa-card{% if class %} {{ class }}{% endif %}{% if card_variant == 'header-first' %} usa-card--header-first{% elseif card_variant == 'flag-left' or card_variant == 'flag-right' %} usa-card--flag{% endif %}{% if card_variant == 'flag-right' %} usa-card--media-right{% endif %}">
+{# Build the CSS classes list cleanly before rendering #}
+{% set card_classes = [
+    'usa-card',
+    class,
+    card_variant == 'card-group' ? 'card-grid-item' : '',
+    card_variant == 'header-first' ? 'usa-card--header-first' : '',
+    card_variant in ['flag-left', 'flag-right'] ? 'usa-card--flag' : '',
+    card_variant == 'flag-right' ? 'usa-card--media-right' : ''
+]|filter(v => v is not empty)|join(' ') %}
+
+{# Render card wrapper #}
+{% if card_variant == 'card-group' %}
+  <div class="{{ card_classes }}">
+{% else %}
+  <li class="{{ card_classes }}">
+{% endif %}
+
 	<div class="usa-card__container">
 		{% if heading %}
 			<div class="usa-card__header">
 				<h2 class="usa-card__heading">{{ heading }}</h2>
 			</div>
 		{% endif %}
+
 		{% if image_src %}
 			<div class="usa-card__media">
 				<div class="usa-card__img">
@@ -21,15 +38,22 @@
 				</div>
 			</div>
 		{% endif %}
+
 		{% if body %}
 			<div class="usa-card__body">
 				<p>{{ body }}</p>
 			</div>
 		{% endif %}
+
 		{% if link_label and link_url %}
 			<div class="usa-card__footer">
 				<a class="usa-button" href="{{ link_url }}">{{ link_label }}</a>
 			</div>
 		{% endif %}
 	</div>
-</li>
+
+  {% if card_variant == 'card-group' %}
+  </div>
+{% else %}
+  </li>
+{% endif %}
