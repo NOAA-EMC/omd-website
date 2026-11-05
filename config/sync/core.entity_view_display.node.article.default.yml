@@ -23,7 +23,7 @@ mode: default
 content:
   field_author:
     type: string
-    label: hidden
+    label: visually_hidden
     settings:
       link_to_entity: false
       link_rel: canonical
@@ -41,7 +41,7 @@ content:
     region: content
   field_publication_date:
     type: datetime_default
-    label: hidden
+    label: visually_hidden
     settings:
       timezone_override: ''
       format_type: medium
@@ -68,7 +68,7 @@ content:
     region: content
   field_tags:
     type: entity_reference_label
-    label: hidden
+    label: visually_hidden
     settings:
       link: true
     third_party_settings: {  }
@@ -76,7 +76,7 @@ content:
     region: content
   field_topic:
     type: entity_reference_label
-    label: hidden
+    label: visually_hidden
     settings:
       link: true
     third_party_settings: {  }
