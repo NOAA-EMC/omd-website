@@ -1,0 +1,13 @@
+{# Theme override for the dynamic content paragraph. #}
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished',
+] %}
+
+{{ include('omd:paragraph-section', {
+  heading: content.field_section_heading,
+  text: content.field_dynamic_content_view,
+  classes: classes,
+}, false) }}

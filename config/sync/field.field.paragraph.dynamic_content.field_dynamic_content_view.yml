@@ -1,0 +1,29 @@
+uuid: 9202ec21-b9ee-4e99-a8c2-bb10b3218c39
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dynamic_content_view
+    - paragraphs.paragraphs_type.dynamic_content
+    - views.view.latest_articles
+  module:
+    - viewsreference
+id: paragraph.dynamic_content.field_dynamic_content_view
+field_name: field_dynamic_content_view
+entity_type: paragraph
+bundle: dynamic_content
+label: View
+description: ''
+required: true
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  handler: 'viewsreference:view'
+  handler_settings: { }
+  plugin_types:
+    default: default
+  preselect_views:
+    latest_articles: latest_articles
+  enabled_settings: { }
+field_type: viewsreference
