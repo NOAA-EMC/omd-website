@@ -1,0 +1,10 @@
+uuid: b8f9353b-ed22-416f-bb0a-0e23c6720d31
+langcode: en
+status: true
+dependencies: {  }
+id: dynamic_content
+label: 'Dynamic Content'
+icon_uuid: null
+icon_default: null
+description: 'Displays an approved View selected by an editor.'
+behavior_plugins: {  }

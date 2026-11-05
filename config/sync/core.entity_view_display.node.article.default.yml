@@ -14,7 +14,6 @@ dependencies:
   module:
     - datetime
     - entity_reference_revisions
-    - nomarkup
     - user
 id: node.article.default
 targetEntityType: node
@@ -36,11 +35,7 @@ content:
     settings:
       view_mode: default
       link: false
-    third_party_settings:
-      nomarkup:
-        enabled: false
-        separator: '|'
-        referenced_entity: '0'
+    third_party_settings: {  }
     weight: 0
     region: content
   field_publication_date:

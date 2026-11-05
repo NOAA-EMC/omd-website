@@ -1,0 +1,32 @@
+uuid: 5bb089b7-47a3-4a86-a5d5-e05161b9731e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dynamic_content.field_dynamic_content_view
+    - field.field.paragraph.dynamic_content.field_section_heading
+    - paragraphs.paragraphs_type.dynamic_content
+  module:
+    - viewsreference
+id: paragraph.dynamic_content.default
+targetEntityType: paragraph
+bundle: dynamic_content
+mode: default
+content:
+  field_dynamic_content_view:
+    type: viewsreference_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_section_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
