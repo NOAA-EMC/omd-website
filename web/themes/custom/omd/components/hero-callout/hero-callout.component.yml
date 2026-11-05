@@ -21,3 +21,13 @@ props:
     call_to_action_url:
       type: string
       title: Call-to-action URL
+    variant:
+      type: string
+      title: Component variant
+      description: Choose between full-width or contained layout.
+      enum:
+        - default
+        - contained
+      default: default
+slots: {}
+

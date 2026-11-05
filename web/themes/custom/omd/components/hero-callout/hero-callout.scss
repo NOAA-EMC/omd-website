@@ -1,6 +1,7 @@
 @use "uswds-core" as *;
 @use "../../sass/tools/custom_mixins" as *;
 
+// Expanded Variant Styles
 .usa-hero {
   @include u-position("relative");
   @include u-display("flex");
@@ -37,5 +38,10 @@
   .usa-hero__heading {
     @include u-maxw(mobile);
     @include u-color("primary-darker");
+  }
+  // Contained Variant Styles
+  &.usa-hero--contained {
+    @include u-width("full");
+    @include u-margin-x(0);
   }
 }

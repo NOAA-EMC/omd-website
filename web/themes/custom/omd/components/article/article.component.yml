@@ -1,0 +1,52 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Article
+description: Complete article layout composed from Drupal-rendered article fields.
+status: stable
+props:
+  type: object
+  properties:
+    article_title:
+      type: string
+      title: Article title
+    article_hero_image_uri:
+      type: string
+      title: Hero image URI
+    article_publication_date:
+      type:
+        - object
+        - string
+      title: Publication date
+    article_summary:
+      type:
+        - object
+        - string
+      title: Summary
+    article_author:
+      type:
+        - object
+        - string
+      title: Author
+    article_sections:
+      type:
+        - object
+        - string
+      title: Article sections
+    article_tags:
+      type:
+        - object
+        - string
+      title: Tags
+    article_tags_label:
+      type: string
+      title: Tags label
+      default: Tags
+    article_classes:
+      type: array
+      title: Article classes
+      items:
+        type: string
+    remaining_content:
+      type:
+        - object
+        - string
+      title: Remaining Drupal content

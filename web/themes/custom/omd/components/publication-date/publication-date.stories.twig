@@ -1,0 +1,10 @@
+{% stories publication_date with { title: 'OMD/Components/Publication Date' } %}
+
+{% story publication_date with { name: 'Publication date' } %}
+{% set date %}
+  <time datetime="2026-11-05">November 5, 2026</time>
+{% endset %}
+{{ include('omd:publication-date', { date: date }, false) }}
+{% endstory %}
+
+{% endstories %}

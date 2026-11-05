@@ -1,0 +1,8 @@
+{% set tags = tags|default(null) %}
+{% set label = label|default('Tags') %}
+{% if tags %}
+  <div class="tags">
+    <span class="tags-label">{{ label }}: </span>
+    {{ tags }}
+  </div>
+{% endif %}

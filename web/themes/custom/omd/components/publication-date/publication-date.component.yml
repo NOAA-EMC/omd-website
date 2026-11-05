@@ -1,0 +1,17 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Publication date
+description: Displays an article publication date with its label.
+status: stable
+props:
+  type: object
+  properties:
+    date:
+      type:
+        - object
+        - string
+      title: Publication date
+      description: Rendered Drupal date field or date markup.
+    label:
+      type: string
+      title: Date label
+      default: Published

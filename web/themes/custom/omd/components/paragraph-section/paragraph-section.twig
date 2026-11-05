@@ -1,0 +1,14 @@
+{% set heading = heading|default(null) %}
+{% set text = text|default(null) %}
+{% set classes = classes|default([]) %}
+
+<section{{ attributes.addClass(['paragraph-section']|merge(classes)) }}>
+  {% if heading|render %}
+    <h2 class="paragraph-section-heading">{{ heading }}</h2>
+  {% endif %}
+  {% if text|render %}
+    <div class="paragraph-section-text">
+      {{ text }}
+    </div>
+  {% endif %}
+</section>

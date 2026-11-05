@@ -1,0 +1,22 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Paragraph section
+description: Article section with a heading and body text.
+status: stable
+props:
+  type: object
+  properties:
+    heading:
+      type:
+        - object
+        - string
+      title: Section heading
+    text:
+      type:
+        - object
+        - string
+      title: Section text
+    classes:
+      type: array
+      title: Wrapper classes
+      items:
+        type: string

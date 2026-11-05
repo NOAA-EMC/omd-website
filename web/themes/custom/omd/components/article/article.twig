@@ -1,0 +1,70 @@
+{% set article_title = article_title|default('') %}
+{% set article_hero_image_uri = article_hero_image_uri|default(null) %}
+{% set article_publication_date = article_publication_date|default(null) %}
+{% set article_summary = article_summary|default(null) %}
+{% set article_author = article_author|default(null) %}
+{% set article_sections = article_sections|default(null) %}
+{% set article_tags = article_tags|default(null) %}
+{% set article_tags_label = article_tags_label|default('Tags') %}
+{% set article_classes = article_classes|default(['article']) %}
+{% set remaining_content = remaining_content|default(null) %}
+
+<article{{ attributes.addClass(article_classes) }}>
+
+  {% if article_hero_image_uri %}
+    {{ include('omd:hero-callout', {
+      hero_heading: '',
+      hero_image_uri: article_hero_image_uri,
+      hero_body: '',
+      variant: 'contained'
+    }, false) }}
+  {% endif %}
+
+  <div class="article-content">
+
+    {% if article_title %}
+      <h1 class="article-title">{{ article_title }}</h1>
+    {% endif %}
+
+    {% if article_summary|render %}
+      <div class="article-summary">
+        {{ article_summary }}
+      </div>
+    {% endif %}
+
+
+
+    {% if article_author|render %}
+      <div class="article-author">
+        <span>By: </span>
+        {{ article_author }}
+      </div>
+    {% endif %}
+    
+    {% if article_publication_date|render %}
+      <div class="article-publication-date">
+        {{ include('omd:publication-date',
+         { date: article_publication_date },
+          false) }}
+      </div>
+    {% endif %}
+
+    {% if article_tags|render %}
+      <div class="article-tags">
+        {{ include('omd:tags', {
+        tags: article_tags,
+        label: article_tags_label
+      }, false) }}
+      </div>
+    {% endif %}
+
+    {% if article_sections %}
+      <div class="article-sections">
+        {{ article_sections }}
+      </div>
+    {% endif %}
+
+    {{ remaining_content }}
+  </div>
+
+</article>

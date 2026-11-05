@@ -1,0 +1,38 @@
+@use "uswds-core" as *;
+
+.article {
+  .article-content {
+    @include u-padding-y(2);
+  }
+
+  .article-title {
+    @include u-color("primary");
+    @include u-margin-y(1);
+  }
+
+  .article-summary {
+    @include u-font("sans", "md");
+    @include u-margin-bottom(1);
+  }
+
+  .article-author {
+    @include u-display("flex");
+    @include grid-gap(1);
+    @include u-color("base-dark");
+  }
+  .article-tags {
+    @include u-border-bottom(1px, "solid", "base-lighter");
+    @include u-margin-bottom(1);
+    @include u-padding-bottom(1);
+  }
+  .article-publication-date {
+    @include u-margin-bottom(1);
+  }
+
+  .article-sections {
+    /* prettier-ignore */
+    h2, h3, h4, h5, h6 {
+      @include u-color("primary-dark");
+    }
+  }
+}

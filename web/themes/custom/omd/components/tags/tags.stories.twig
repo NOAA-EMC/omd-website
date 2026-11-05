@@ -1,0 +1,17 @@
+{% stories article_tags with { title: 'OMD/Components/Article Tags' } %}
+
+{% story linked_tags with { name: 'Linked tags' } %}
+{% set rendered_tags %}
+  <ul class="links">
+    <li><a href="/taxonomy/term/1">Forecast guidance</a></li>
+    <li><a href="/taxonomy/term/2">Severe weather</a></li>
+    <li><a href="/taxonomy/term/3">Model development</a></li>
+  </ul>
+{% endset %}
+{{ include('omd:tags', {
+  tags: rendered_tags,
+  label: 'Related topics'
+}, false) }}
+{% endstory %}
+
+{% endstories %}
