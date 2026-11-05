@@ -1,0 +1,17 @@
+uuid: 4c35883e-de0a-4e64-8c38-30312c59458a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 3o8bUUIAc-cqB7nU3bzL4uaKJeiWzZaOqD4HSTYXKjo
+id: none
+label: None
+description: 'Only label text and field value, no field markup at all.'
+field_tag: none
+field_classes: ''
+field_items_wrapper_tag: none
+field_items_wrapper_classes: ''
+field_item_tag: none
+field_item_classes: ''
+label_tag: none
+label_classes: ''
