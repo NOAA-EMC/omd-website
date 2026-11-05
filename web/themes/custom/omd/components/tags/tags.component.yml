@@ -1,0 +1,13 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Article tags
+description: Displays linked taxonomy terms associated with an article.
+status: stable
+props:
+  type: object
+  properties:
+    tags:
+      type:
+        - object
+        - string
+      title: Rendered tags
+      description: Drupal render array or captured markup containing linked tag terms.

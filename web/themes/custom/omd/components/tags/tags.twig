@@ -1,0 +1,7 @@
+{% set tags = tags|default(null) %}
+{% if tags %}
+  <div class="article-tags">
+    <span class="article-tags-label">Tags: </span>
+    {{ tags }}
+  </div>
+{% endif %}
