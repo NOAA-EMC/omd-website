@@ -1,0 +1,9 @@
+uuid: 8e0c7d4f-8bf3-4024-9f34-eaf2e2ce1f9e
+langcode: en
+status: true
+dependencies: {  }
+name: 'Event format'
+vid: event_format
+description: 'Classifies scheduled content as an event or seminar.'
+weight: 0
+new_revision: false
