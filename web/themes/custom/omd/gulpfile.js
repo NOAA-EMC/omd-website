@@ -4,11 +4,16 @@
 const uswds = require('@uswds/compile');
 const { dest, series, src, watch } = require('gulp');
 const fs = require('node:fs');
+const os = require('node:os');
 const path = require('node:path');
 const { spawn } = require('node:child_process');
 
 const components = './components';
-const sassSources = ['sass/**/*.scss', 'components/**/*.scss'];
+const sassSources = [
+  'sass/**/*.scss',
+  'components/**/*.scss',
+  '!components/**/.omd-sass-build-*/**',
+];
 const assetSources = ['js/**/*', 'images/**/*'];
 
 uswds.settings.version = 3;
@@ -61,7 +66,7 @@ async function compileComponentSass() {
     }
 
     const buildDirectory = fs.mkdtempSync(
-      path.join(directory, '.omd-sass-build-')
+      path.join(os.tmpdir(), 'omd-sass-build-')
     );
     try {
       for (const entryPoint of entryPoints) {
@@ -138,7 +143,7 @@ function generateStories(done) {
 
 function watchStories() {
   return watch(
-    ['components/**/*.stories.twig', 'templates/**/*.stories.twig'],
+    ['components/**/*.twig', 'templates/**/*.twig'],
     { ignoreInitial: true },
     generateStories
   );

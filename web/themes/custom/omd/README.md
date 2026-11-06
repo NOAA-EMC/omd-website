@@ -59,7 +59,7 @@ Run these commands from `web/themes/custom/omd` in WSL:
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `npm run build`                   | Compile theme and component Sass, refresh USWDS, and copy custom JavaScript and images.                         |
 | `npm run watch`                   | Watch Sass, custom JavaScript, and custom images. Run `build` first.                                            |
-| `npm run storybook`               | Build assets and stories, then start Storybook with asset and Twig story watchers. Drupal/Lando must be running. |
+| `npm run storybook`               | Build assets and stories, then watch assets and all Twig files for Storybook refreshes. Drupal/Lando must be running. |
 
 To generate stories directly through Lando Drush, run this from the repository
 root:
