@@ -22,21 +22,25 @@ props:
         - string
       title: Format
     event_start_value:
-      type: string
-      title: Raw start date and time
-      description: ISO 8601 value used by the Collection-style calendar date.
+      type:
+        - integer
+        - string
+      title: Event start value
+      description: Raw Smart Date start timestamp used by the calendar date treatment.
     event_end_value:
-      type: string
-      title: Raw end date and time
-      description: ISO 8601 value used to determine same-day and multi-day schedules.
+      type:
+        - integer
+        - string
+      title: Event end value
+      description: Raw Smart Date end timestamp used by the calendar date treatment.
+    event_recurring:
+      type: boolean
+      title: Recurring event
     event_location:
       type:
         - object
         - string
       title: Location or meeting details
-    event_recurring:
-      type: boolean
-      title: Recurring event
     event_link_url:
       type: string
       title: Registration or join URL

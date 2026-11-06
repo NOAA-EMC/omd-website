@@ -1,38 +1,25 @@
-{% set event_title = event_title|default('') %}
-{% set event_hero_image_uri = event_hero_image_uri|default(null) %}
-{% set event_summary = event_summary|default(null) %}
-{% set event_format = event_format|default(null) %}
+{# Rendered field content. #}
 {% set event_start_value = event_start_value|default('') %}
 {% set event_end_value = event_end_value|default('') %}
-{% set event_location = event_location|default(null) %}
 {% set event_recurring = event_recurring|default(false) %}
-{% set event_link_url = event_link_url|default('') %}
-{% set event_link_label = event_link_label|default('View event details') %}
-{% set event_tags = event_tags|default(null) %}
-{% set event_details = event_details|default(null) %}
-{% set event_classes = event_classes|default(['event']) %}
+{% set event_format_content = event_format|default(null)|render %}
+{% set event_summary_content = event_summary|default(null)|render %}
+{% set event_location_content = event_location|default(null)|render %}
+{% set event_tags_content = event_tags|default(null)|render %}
+{% set event_details_content = event_details|default(null)|render %}
 
-{# Rendered field content. #}
-{% set event_format_content = event_format|render %}
-{% set event_summary_content = event_summary|render %}
-{% set event_location_content = event_location|render %}
-{% set event_tags_content = event_tags|render %}
-{% set event_details_content = event_details|render %}
-
-{# Schedule state and presentation values. #}
-{% set has_event_location = event_location_content %}
 {% set event_is_multi_day = event_start_value and event_end_value and event_start_value|date('M j') != event_end_value|date('M j') %}
-{% set has_event_information = event_start_value or event_end_value or has_event_location or event_recurring %}
 {% set event_calendar_day = event_start_value ? event_start_value|date('j') : '' %}
 {% set event_time_label = event_is_multi_day or not event_end_value ? 'Starts' : 'Time' %}
 {% set event_start_display = event_start_value ? event_start_value|date(event_is_multi_day ? 'l, F j, Y, g:i A' : 'g:i A') : '' %}
 {% set event_end_display = event_end_value ? event_end_value|date(event_is_multi_day ? 'l, F j, Y, g:i A' : 'g:i A') : '' %}
+{% set has_event_information = event_start_value or event_end_value or event_location_content or event_recurring %}
 {% if event_is_multi_day %}
   {% set event_calendar_day = event_calendar_day ~ '–' ~ event_end_value|date('j') %}
 {% endif %}
 
-<article{{ attributes.addClass(event_classes) }}>
-  {% if event_hero_image_uri %}
+<article{{ attributes.addClass(event_classes|default(['event'])) }}>
+  {% if event_hero_image_uri|default %}
     {{ include('omd:hero-callout', {
       hero_heading: '',
       hero_image_uri: event_hero_image_uri,
@@ -46,7 +33,7 @@
       <div class="event-format">{{ event_format_content }}</div>
     {% endif %}
 
-    {% if event_title %}
+    {% if event_title|default %}
       <h1 class="event-title">{{ event_title }}</h1>
     {% endif %}
 
@@ -59,9 +46,9 @@
         {{ include('omd:tags', { tags: event_tags_content, label: 'Topics' }, false) }}
       </div>
     {% endif %}
-    {% if event_link_url %}
+    {% if event_link_url|default %}
       <div class="event-action">
-        <a class="usa-button" href="{{ event_link_url }}">{{ event_link_label }}</a>
+        <a class="usa-button" href="{{ event_link_url }}">{{ event_link_label|default('View event details') }}</a>
       </div>
     {% endif %}
     {% if has_event_information %}
@@ -69,9 +56,11 @@
         {% if event_start_value %}
           <div class="event-calendar{{ event_is_multi_day ? ' event-calendar--range' : '' }}">
             <div class="usa-collection__calendar-date">
-              <time datetime="{{ event_start_value }}">
+              <time datetime="{{ event_start_value|date('c') }}">
                 <span class="usa-collection__calendar-date-month">{{ event_start_value|date('M')|upper }}</span>
-                <span class="usa-collection__calendar-date-day">{{ event_calendar_day }}</span>
+                <span class="usa-collection__calendar-date-day">
+                  {{ event_calendar_day }}
+                </span>
               </time>
             </div>
           </div>
@@ -84,10 +73,10 @@
             {% endif %}
             <div class="event-time">
               <span>{{ event_time_label }}: </span>
-              <time datetime="{{ event_start_value }}">{{ event_start_display }}</time>
+              <time datetime="{{ event_start_value|date('c') }}">{{ event_start_display }}</time>
               {% if event_end_value and not event_is_multi_day %}
                 <span aria-hidden="true">–</span>
-                <time datetime="{{ event_end_value }}">{{ event_end_display }}</time>
+                <time datetime="{{ event_end_value|date('c') }}">{{ event_end_display }}</time>
               {% endif %}
             </div>
           {% endif %}
@@ -95,7 +84,7 @@
           {% if event_is_multi_day %}
             <div class="event-time">
               <span>Ends: </span>
-              <time datetime="{{ event_end_value }}">{{ event_end_display }}</time>
+              <time datetime="{{ event_end_value|date('c') }}">{{ event_end_display }}</time>
             </div>
           {% endif %}
 
@@ -103,7 +92,7 @@
             <div class="event-recurring"><span>Recurring Event</span></div>
           {% endif %}
 
-          {% if has_event_location %}
+          {% if event_location_content %}
             <div class="event-location">
               <span>Location: </span>
               {{ event_location_content }}

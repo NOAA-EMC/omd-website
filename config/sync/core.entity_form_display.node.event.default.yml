@@ -3,40 +3,51 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.event.field_event_date
     - field.field.node.event.field_event_details
-    - field.field.node.event.field_event_end
     - field.field.node.event.field_event_format
     - field.field.node.event.field_event_link
     - field.field.node.event.field_event_location
-    - field.field.node.event.field_event_recurring
-    - field.field.node.event.field_event_start
     - field.field.node.event.field_hero_image
     - field.field.node.event.field_summary
     - field.field.node.event.field_tags
     - node.type.event
   module:
-    - datetime
     - link
     - media_library
+    - smart_date
     - text
 id: node.event.default
 targetEntityType: node
 bundle: event
 mode: default
 content:
+  field_event_date:
+    type: smartdate_default
+    weight: 5
+    region: content
+    settings:
+      modal: false
+      default_duration: 60
+      default_duration_increments: |-
+        30
+        60|1 hour
+        90
+        120|2 hours
+        custom
+      show_extra: false
+      hide_date: false
+      allday: true
+      remove_seconds: true
+      duration_overlay: true
+    third_party_settings: {  }
   field_event_details:
     type: text_textarea
-    weight: 26
+    weight: 9
     region: content
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
-  field_event_end:
-    type: datetime_default
-    weight: 6
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_event_format:
     type: options_buttons
@@ -54,24 +65,11 @@ content:
     third_party_settings: {  }
   field_event_location:
     type: string_textfield
-    weight: 7
+    weight: 6
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  field_event_recurring:
-    type: boolean_checkbox
-    weight: 9
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  field_event_start:
-    type: datetime_default
-    weight: 5
-    region: content
-    settings: {  }
     third_party_settings: {  }
   field_hero_image:
     type: media_library_widget
@@ -82,7 +80,7 @@ content:
     third_party_settings: {  }
   field_summary:
     type: string_textfield
-    weight: 4
+    weight: 3
     region: content
     settings:
       size: 255
@@ -90,7 +88,7 @@ content:
     third_party_settings: {  }
   field_tags:
     type: options_buttons
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }

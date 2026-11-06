@@ -47,8 +47,10 @@
 
   .event-information {
     @include u-flex(1);
+
     .event-time {
       @include u-margin-bottom(1);
+
       span {
         @include u-text("bold");
         @include u-text("uppercase");
@@ -58,6 +60,7 @@
 
     .event-recurring {
       @include u-margin-y(2);
+
       span {
         @include u-color("base-lightest");
         @include u-bg("primary");
