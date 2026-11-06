@@ -31,7 +31,7 @@ is only the local or hosted preview frontend.
    cd web/themes/custom/omd
    nvm use
    npm ci
-   npm run prod-build
+   npm run build
    ```
 
    Run npm, Gulp, and Storybook in WSL. Run Drupal and Drush through Lando; the
@@ -57,13 +57,9 @@ Run these commands from `web/themes/custom/omd` in WSL:
 
 | Command                           | Purpose                                                                                                         |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `npm run prod-build`              | Compile theme and component Sass, copy USWDS and custom assets, and build the icon sprite.                      |
-| `npm run watch-css`               | Watch theme and component Sass. Run `prod-build` first.                                                         |
-| `npm run watch-all`               | Watch Sass, custom JavaScript, and custom images. Run `prod-build` first.                                       |
-| `npm run storybook`               | Build assets and stories once, then start Storybook with the CSS watcher. Drupal/Lando must already be running. |
-| `npm run storybook:no-watch`      | Start Storybook without building or starting watchers. Use after preparing assets and stories.                  |
-| `npm run build-storybook`         | Build assets and stories, then generate `storybook-static/`.                                                    |
-| `npm run storybook:watch-stories` | Optionally regenerate stories when a Twig story changes. Run in a separate terminal.                            |
+| `npm run build`                   | Compile theme and component Sass, refresh USWDS, and copy custom JavaScript and images.                         |
+| `npm run watch`                   | Watch Sass, custom JavaScript, and custom images. Run `build` first.                                            |
+| `npm run storybook`               | Build assets and stories, then start Storybook with asset and Twig story watchers. Drupal/Lando must be running. |
 
 To generate stories directly through Lando Drush, run this from the repository
 root:
@@ -94,8 +90,9 @@ in `omd.libraries.yml`, and add its preview reference in
 
 The build generates `assets/css/styles.css` and its source map, component CSS
 and maps, copied USWDS assets under `assets/uswds/`, and copied custom assets
-under `assets/js/` and `assets/images/`. These are runtime theme assets. They
-remain part of the deployed theme because this repository has no checked-in
+under `assets/js/` and `assets/images/`. Component CSS remains beside its SDC
+because Drupal discovers and attaches it with that component. These are runtime
+theme assets. They remain part of the deployed theme because this repository has no checked-in
 deployment build that regenerates them. Do not remove them from version control
 until a deployment build is implemented and verified.
 

@@ -5,13 +5,8 @@
   "main": "gulpfile.js",
   "scripts": {
     "build": "gulp build",
-    "watch-css": "gulp watchCss",
-    "watch-all": "gulp watchAll",
-    "storybook:compile": "gulp generateStories",
-    "storybook:watch-stories": "gulp watchStories",
-    "storybook:no-watch": "storybook dev -p 6006",
-    "storybook": "npm run build && npm run storybook:compile && concurrently --kill-others --names css,storybook \"npm run watch-css\" \"npm run storybook:no-watch\"",
-    "build-storybook": "npm run build && npm run storybook:compile && storybook build"
+    "watch": "gulp watch",
+    "storybook": "npm run build && gulp generateStories && concurrently --kill-others --names assets,stories,storybook \"gulp watch\" \"gulp watchStories\" \"storybook dev -p 6006\""
   },
   "keywords": [],
   "author": "Kyle Lu",
