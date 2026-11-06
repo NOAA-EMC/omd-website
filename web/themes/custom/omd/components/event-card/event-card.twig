@@ -1,6 +1,6 @@
 {% set location_content = location|default(null)|render %}
 
-<aside class="event-card" aria-label="Event information">
+<div class="event-card" aria-label="Event information">
 
   {% if month|default or date_label|default or time_label|default or frequency_label|default or location_content %}
     <div class="event-card__details">
@@ -47,4 +47,4 @@
       <a class="usa-button" href="{{ link_url }}">{{ link_label|default('Event Registration') }}</a>
     </div>
   {% endif %}
-</aside>
+</div>

@@ -1,6 +1,8 @@
-{% stories event_card with { title: 'OMD/Content/Event Card' } %}
+{% stories event_card with { title: 'OMD/Components/Event Card' } %}
 
 {% story registration_card with { name: 'Registration card' } %}
+
+<div class="grid-col-4">
 {{ include('omd:event-card', {
   month: 'NOV',
   day: '11',
@@ -13,5 +15,6 @@
   link_label: 'Event Registration'
 }, false) }}
 {% endstory %}
+</div>
 
 {% endstories %}
