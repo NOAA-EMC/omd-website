@@ -8,7 +8,7 @@
 {% set event_format_content = event_format|default(null)|render %}
 {% set event_summary_content = event_summary|default(null)|render %}
 {% set event_location_content = event_location|default(null)|render %}
-{% set event_tags_content = event_tags|default(null)|render %}
+{% set event_tags_content = event_tags|default(null) %}
 {% set event_details_content = event_details|default(null)|render %}
 
 {# Format schedule values for the Event Card. #}
