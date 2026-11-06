@@ -1,0 +1,19 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Event card
+description: Registration and logistics sidebar for an event.
+status: stable
+props:
+  type: object
+  properties:
+    month: { type: string, title: Calendar month }
+    day: { type: string, title: Calendar day or date range }
+    datetime: { type: string, title: ISO 8601 start datetime }
+    date_label: { type: string, title: Event date label }
+    time_label: { type: string, title: Event time label }
+    frequency_label: { type: string, title: Recurrence label }
+    location:
+      type: [object, string]
+      title: Rendered location
+    link_url: { type: string, title: Registration URL }
+    link_label: { type: string, title: Registration label, default: Event Registration }
+    is_multi_day: { type: boolean, title: Whether the event spans multiple days }

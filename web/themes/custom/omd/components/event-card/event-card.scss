@@ -1,0 +1,59 @@
+@use "uswds-core" as *;
+
+.event-card {
+  @include u-bg("base-lightest");
+  @include u-border("1px", "base-lighter");
+  @include u-radius("md");
+  @include u-padding(3);
+
+  &__action {
+    @include u-margin-top(2.5);
+
+    .usa-button {
+      @include u-width("full");
+      @include u-margin(0);
+      @include u-text("center");
+    }
+  }
+
+  &__details {
+    @include u-display("flex");
+    @include u-align-items("align-start");
+    @include grid-gap(2);
+  }
+
+  &__calendar {
+    @include u-display("flex");
+    @include u-align-self("align-start");
+
+    &--range .usa-collection__calendar-date-day {
+      @include u-font("ui", 4);
+      white-space: nowrap;
+    }
+  }
+
+  &__metadata {
+    @include u-flex("fill");
+    @include u-margin(0);
+
+    &-item {
+      @include u-margin-bottom(2);
+
+      &:last-child {
+        @include u-margin-bottom(0);
+      }
+
+      dt {
+        @include u-font("ui", "2xs");
+        @include u-text("bold");
+        @include u-text("uppercase");
+        @include u-color("base-dark");
+        @include u-margin-bottom(0.5);
+      }
+
+      dd {
+        @include u-margin(0);
+      }
+    }
+  }
+}
