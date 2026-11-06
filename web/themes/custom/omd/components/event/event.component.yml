@@ -33,6 +33,12 @@ props:
         - string
       title: Event end value
       description: Raw Smart Date end timestamp used by the calendar date treatment.
+    event_timezone:
+      type:
+        - string
+        - 'null'
+      title: Event timezone
+      description: IANA timezone associated with the Smart Date value.
     event_recurring:
       type: boolean
       title: Recurring event
@@ -47,7 +53,7 @@ props:
     event_link_label:
       type: string
       title: Registration or join link label
-      default: View event details
+      default: Event Registration
     event_tags:
       type:
         - object
