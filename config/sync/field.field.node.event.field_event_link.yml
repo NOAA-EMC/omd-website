@@ -11,7 +11,7 @@ id: node.event.field_event_link
 field_name: field_event_link
 entity_type: node
 bundle: event
-label: 'Registration or join link'
+label: 'Registration or Join Link'
 description: 'Optional external registration, meeting, or event-access link.'
 required: false
 translatable: true

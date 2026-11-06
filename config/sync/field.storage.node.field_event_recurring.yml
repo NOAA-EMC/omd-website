@@ -8,9 +8,7 @@ id: node.field_event_recurring
 field_name: field_event_recurring
 entity_type: node
 type: boolean
-settings:
-  on_label: 'Recurring event'
-  off_label: ''
+settings: {  }
 module: core
 locked: false
 cardinality: 1
