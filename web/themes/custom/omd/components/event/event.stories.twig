@@ -1,4 +1,4 @@
-{% stories event with { title: 'OMD/Content/Event' } %}
+{% stories event with { title: 'Content/Event' } %}
 
 {% story event_content_type with { name: 'Event Content Type' } %}
 
@@ -7,9 +7,9 @@
     <a href="/taxonomy/term/2" class="usa-tag">Forecast guidance</a>
   {% endset %}
 
-  <div class="grid-container">
     {{ include('omd:event', {
       event_title: 'Modeling Seminar: Advancing hurricane prediction',
+      event_hero_image_uri: 'themes/custom/omd/assets/images/hero-callout-banner.png',
       event_summary: 'A seminar on new approaches to hurricane intensity prediction and their operational applications.',
       event_format: 'Seminar',
       event_start_value: '1794510000',
@@ -22,7 +22,7 @@
       event_tags: event_tags,
       event_details: 'Join OMD researchers for a discussion of new approaches to hurricane intensity prediction.',
     }, false) }}
-  </div>
+  
 {% endstory %}
 
 {% endstories %}
