@@ -27,5 +27,6 @@ settings:
   preselect_views:
     latest_articles: latest_articles
     upcoming_events: upcoming_events
-  enabled_settings: {  }
+  enabled_settings:
+    title: title
 field_type: viewsreference
