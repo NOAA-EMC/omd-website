@@ -1,10 +1,11 @@
 @use "uswds-core" as *;
 
 .usa-collection > .usa-collection__item {
+  @include u-display("block");
   @include u-border-top(0, solid, "base-darkest");
   @include u-margin-y(0);
   @include u-padding-top(0);
-  display: block;
+  @include u-maxw("full");
 }
 
 .collection-item {
@@ -13,4 +14,12 @@
   @include u-display("flex");
   @include u-margin-y(2);
   @include u-padding-top(2);
+}
+
+.usa-collection {
+  .collection-grid-item {
+    @include at-media("tablet") {
+      @include grid-col(6);
+    }
+  }
 }

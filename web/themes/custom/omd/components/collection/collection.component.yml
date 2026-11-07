@@ -11,6 +11,7 @@ props:
       enum:
         - default
         - two_column
+        - item
       default: default
     items:
       type: array

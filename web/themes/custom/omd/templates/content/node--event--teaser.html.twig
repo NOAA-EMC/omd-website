@@ -1,0 +1,36 @@
+{# Convert an event node into the data contract expected by omd:collection. #}
+{% set event_start = node.field_event_date[0].value|default('') %}
+{% set event_timezone = node.field_event_date[0].timezone|default(null) %}
+{% set image_media = node.field_hero_image.entity ?? null %}
+{% set image_file = image_media ? image_media.field_media_image.entity : null %}
+{% set metadata = [] %}
+{% set tags = [] %}
+
+{% if event_start %}
+  {% set metadata = metadata|merge([event_start|date('F j, Y, g:i a', event_timezone)]) %}
+{% endif %}
+{% if node.field_event_location.value|default('') %}
+  {% set metadata = metadata|merge([node.field_event_location.value]) %}
+{% endif %}
+{% if node.field_event_format.entity %}
+  {% set metadata = metadata|merge([node.field_event_format.entity.label]) %}
+{% endif %}
+{% for tag in node.field_tags %}
+  {% if tag.entity %}
+    {% set tags = tags|merge([tag.entity.label]) %}
+  {% endif %}
+{% endfor %}
+
+{{ include('omd:collection', {
+  variant: 'item',
+  items: [{
+    title: node.label,
+    url: path('entity.node.canonical', {'node': node.id}),
+    description: node.field_summary.value|default(''),
+    image_src: image_file ? file_url(image_file.uri.value) : '',
+    image_alt: image_media and image_media.field_media_image.alt ? image_media.field_media_image.alt : '',
+    metadata: metadata,
+    tags: tags,
+    event_date: event_start|date('c', event_timezone)
+  }]
+}, false) }}

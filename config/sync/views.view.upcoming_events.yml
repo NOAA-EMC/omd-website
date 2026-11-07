@@ -157,11 +157,14 @@ display:
             default_group_multiple: {  }
             group_items: {  }
       style:
-        type: default
+        type: html_list
         options:
-          grouping: {  }
-          row_class: ''
+          row_class: 'usa-collection__item collection-grid-item'
           default_row_class: false
+          uses_fields: false
+          type: ul
+          wrapper_class: ''
+          class: 'usa-collection grid-row grid-gap'
       row:
         type: 'entity:node'
         options:
