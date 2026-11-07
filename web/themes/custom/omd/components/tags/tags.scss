@@ -6,8 +6,9 @@
     @include u-color("base-dark");
   }
   .usa-tag {
-    @include u-margin(2px);
-    @include u-padding(2px);
-    @include u-bg("primary");
+    @include u-text("no-underline");
+    &:hover {
+      @include u-text("underline");
+    }
   }
 }

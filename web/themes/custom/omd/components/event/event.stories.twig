@@ -1,0 +1,28 @@
+{% stories event with { title: 'Content/Event' } %}
+
+{% story event_content_type with { name: 'Event Content Type' } %}
+
+  {% set event_tags %}
+    <a href="/taxonomy/term/1" class="usa-tag">Hurricanes</a>
+    <a href="/taxonomy/term/2" class="usa-tag">Forecast guidance</a>
+  {% endset %}
+
+    {{ include('omd:event', {
+      event_title: 'Modeling Seminar: Advancing hurricane prediction',
+      event_hero_image_uri: 'themes/custom/omd/assets/images/hero-callout-banner.png',
+      event_summary: 'A seminar on new approaches to hurricane intensity prediction and their operational applications.',
+      event_format: 'Seminar',
+      event_start_value: '1794510000',
+      event_end_value: '1794513600',
+      event_timezone: 'America/New_York',
+      event_recurring: true,
+      event_location: 'Virtual Seminar',
+      event_link_url: 'https://example.com/register',
+      event_link_label: 'Event Registration',
+      event_tags: event_tags,
+      event_details: 'Join OMD researchers for a discussion of new approaches to hurricane intensity prediction.',
+    }, false) }}
+  
+{% endstory %}
+
+{% endstories %}

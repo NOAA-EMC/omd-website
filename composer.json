@@ -23,6 +23,7 @@
         "drupal/core-recommended": "^11.4",
         "drupal/gin": "^5.0",
         "drupal/paragraphs": "^1.23",
+        "drupal/smart_date": "^4.3",
         "drupal/uswds_base": "^3.12",
         "drupal/viewsreference": "^2.0@beta",
         "drush/drush": "^13.8"

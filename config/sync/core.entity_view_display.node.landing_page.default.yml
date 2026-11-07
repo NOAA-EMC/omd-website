@@ -3,12 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.landing_page.field_dynamic_content
     - field.field.node.landing_page.field_hero_body
     - field.field.node.landing_page.field_hero_call_to_action
     - field.field.node.landing_page.field_hero_call_to_action_link
     - field.field.node.landing_page.field_hero_heading
     - field.field.node.landing_page.field_hero_image
-    - field.field.node.landing_page.field_sections
     - node.type.landing_page
   module:
     - entity_reference_revisions
@@ -19,6 +19,15 @@ targetEntityType: node
 bundle: landing_page
 mode: default
 content:
+  field_dynamic_content:
+    type: entity_reference_revisions_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_hero_body:
     type: string
     label: visually_hidden
@@ -39,7 +48,7 @@ content:
     region: content
   field_hero_call_to_action_link:
     type: link
-    label: above
+    label: visually_hidden
     settings:
       trim_length: 80
       url_only: false
@@ -66,15 +75,6 @@ content:
       link: false
     third_party_settings: {  }
     weight: 1
-    region: content
-  field_sections:
-    type: entity_reference_revisions_entity_view
-    label: visually_hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    weight: 5
     region: content
 hidden:
   links: true

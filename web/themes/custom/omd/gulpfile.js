@@ -2,29 +2,34 @@
 
 // eslint-disable-next-line import/no-unresolved
 const uswds = require('@uswds/compile');
-const { dest, parallel, series, src, watch } = require('gulp');
+const { dest, series, src, watch } = require('gulp');
 const fs = require('node:fs');
+const os = require('node:os');
 const path = require('node:path');
 const { spawn } = require('node:child_process');
 
-const componentPath = './components';
-const sassPaths = ['sass/**/*.scss', 'components/**/*.scss'];
-const customAssetPaths = ['js/**/*', 'images/**/*'];
+const components = './components';
+const sassSources = [
+  'sass/**/*.scss',
+  'components/**/*.scss',
+  '!components/**/.omd-sass-build-*/**',
+];
+const assetSources = ['js/**/*', 'images/**/*'];
 
-// Compile against USWDS 3.
 uswds.settings.version = 3;
-
-// Emit Drupal theme CSS and source maps under assets/.
 uswds.paths.dist.css = './assets/css';
 uswds.paths.dist.theme = './sass';
 uswds.settings.compile.sassSourcemaps = true;
 
-// Find SDC folders for component Sass compilation.
 function componentDirectories() {
   return fs
-    .readdirSync(componentPath, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => path.join(componentPath, entry.name));
+    .readdirSync(components, { withFileTypes: true })
+    .filter(
+      (entry) =>
+        entry.isDirectory() &&
+        fs.existsSync(path.join(components, entry.name, `${entry.name}.component.yml`))
+    )
+    .map((entry) => path.join(components, entry.name));
 }
 
 function sassImportPath(from, to) {
@@ -32,7 +37,6 @@ function sassImportPath(from, to) {
   return importPath.startsWith('.') ? importPath : `./${importPath}`;
 }
 
-// Compile with temporary USWDS paths, then restore the shared compiler config.
 function compileSassAt(themePath, cssPath) {
   const originalThemePath = uswds.paths.dist.theme;
   const originalCssPath = uswds.paths.dist.css;
@@ -52,7 +56,6 @@ function compileSassAt(themePath, cssPath) {
   });
 }
 
-// build/watchCss: compile non-partial component Sass beside its SDC.
 async function compileComponentSass() {
   for (const directory of componentDirectories()) {
     const entryPoints = fs
@@ -63,7 +66,7 @@ async function compileComponentSass() {
     }
 
     const buildDirectory = fs.mkdtempSync(
-      path.join(directory, '.omd-sass-build-')
+      path.join(os.tmpdir(), 'omd-sass-build-')
     );
     try {
       for (const entryPoint of entryPoints) {
@@ -88,55 +91,31 @@ async function compileComponentSass() {
   }
 }
 
-// Copy optional project JS; a missing source folder is a no-op.
-function copyCustomJavaScript() {
-  if (!fs.existsSync('./js')) {
-    return Promise.resolve();
-  }
-  return src('./js/**/*', { allowEmpty: true, encoding: false }).pipe(
-    dest('./assets/js')
-  );
-}
-
-// Copy optional project images; a missing source folder is a no-op.
-function copyCustomImages() {
-  if (!fs.existsSync('./images')) {
-    return Promise.resolve();
-  }
-  return src('./images/**/*', { allowEmpty: true, encoding: false }).pipe(
-    dest('./assets/images')
-  );
-}
-
-// build/watchCustomAssets: copy both custom asset types in order.
-const copyCustomAssets = series(copyCustomJavaScript, copyCustomImages);
-
-// watchCss rebuilds theme Sass; build uses uswds.updateUswds.
 function compileThemeSass() {
   return compileSassAt('./sass', './assets/css');
 }
 
-// npm watch-css/watchAll: rebuild theme and component Sass on changes.
-function watchCss() {
-  return watch(sassPaths, series(compileThemeSass, compileComponentSass));
+function copyAssets() {
+  const sources = assetSources.filter((source) =>
+    fs.existsSync(path.dirname(source))
+  );
+  if (sources.length === 0) {
+    return Promise.resolve();
+  }
+  return src(sources, { base: '.', encoding: false }).pipe(
+    dest('./assets')
+  );
 }
 
-// watchAll: recopy custom JS/images when sources change.
-function watchCustomAssets() {
-  return watch(customAssetPaths, copyCustomAssets);
+function watchFiles() {
+  watch(sassSources, series(compileThemeSass, compileComponentSass));
+  return watch(assetSources, copyAssets);
 }
 
-// npm watch-all: run Sass and custom asset watchers in parallel.
-function watchAll() {
-  return parallel(watchCss, watchCustomAssets)();
-}
-
-// Use DRUPAL_URL for Drush, or the shared Lando URL by default.
 function storyDrupalUrl() {
   return process.env.DRUPAL_URL || 'https://omd.lndo.site';
 }
 
-// npm storybook:compile/watchStories: generate JSON from Twig through Drush.
 function generateStories(done) {
   const drush = spawn(
     'lando',
@@ -149,7 +128,6 @@ function generateStories(done) {
     { stdio: 'inherit' }
   );
   let finished = false;
-  // Signal Gulp once whether the child errors or exits.
   const finish = (error) => {
     if (!finished) {
       finished = true;
@@ -163,24 +141,21 @@ function generateStories(done) {
   });
 }
 
-// npm storybook:watch-stories: regenerate JSON after Twig edits.
 function watchStories() {
   return watch(
-    ['components/**/*.stories.twig', 'templates/**/*.stories.twig'],
+    ['components/**/*.twig', 'templates/**/*.twig'],
     { ignoreInitial: true },
     generateStories
   );
 }
 
-// npm build: refresh USWDS assets, copy custom assets, compile components.
-exports.build = series(
+const build = series(
   uswds.updateUswds,
-  copyCustomAssets,
+  copyAssets,
   compileComponentSass
 );
 
-// Public tasks called by package.json scripts.
-exports.watchCss = watchCss;
-exports.watchAll = watchAll;
+exports.build = build;
+exports.watch = watchFiles;
 exports.generateStories = generateStories;
 exports.watchStories = watchStories;

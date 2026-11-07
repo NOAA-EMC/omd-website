@@ -1,0 +1,37 @@
+{% set event_hero_media = node.field_hero_image.entity ?? null %}
+{% set event_hero_file = event_hero_media.field_media_image.entity ?? null %}
+{% set event_hero_image_uri = event_hero_file ? event_hero_file.uri.value : null %}
+{% set event_link_url = node.field_event_link[0].uri|default('') %}
+{% set event_link_label = node.field_event_link[0].title|default('Event Registration') %}
+
+{{ include('omd:event', {
+  event_title: label,
+  event_hero_image_uri: event_hero_image_uri|default(''),
+  event_summary: content.field_summary,
+  event_format: content.field_event_format,
+  event_start_value: node.field_event_date[0].value|default(''),
+  event_end_value: node.field_event_date[0].end_value|default(''),
+  event_timezone: node.field_event_date[0].timezone|default(null),
+  event_recurring: node.field_event_date[0].rrule|default('') != '',
+  event_location: content.field_event_location,
+  event_link_url: event_link_url,
+  event_link_label: event_link_label,
+  event_tags: content.field_tags,
+  event_details: content.field_event_details,
+  event_classes: [
+    'event',
+    'node--type-' ~ node.bundle|clean_class,
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    not node.isPublished() ? 'is-unpublished'
+  ],
+  remaining_content: content|without(
+    'field_hero_image',
+    'field_summary',
+    'field_event_format',
+    'field_event_date',
+    'field_event_location',
+    'field_event_link',
+    'field_tags',
+    'field_event_details'
+  )
+}, false) }}

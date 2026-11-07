@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.dynamic_content.field_dynamic_content_view
-    - field.field.paragraph.dynamic_content.field_section_heading
     - paragraphs.paragraphs_type.dynamic_content
   module:
     - viewsreference
@@ -21,14 +20,5 @@ content:
         default: default
     third_party_settings: {  }
     weight: 1
-    region: content
-  field_section_heading:
-    type: string
-    label: visually_hidden
-    settings:
-      link_to_entity: false
-      link_rel: canonical
-    third_party_settings: {  }
-    weight: 0
     region: content
 hidden: {  }

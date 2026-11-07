@@ -1,0 +1,60 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Collection
+description: USWDS collection for upcoming events and seminars.
+status: stable
+props:
+  type: object
+  properties:
+    variant:
+      type: string
+      title: Layout variant
+      enum:
+        - default
+        - two_column
+        - item
+      default: default
+    items:
+      type: array
+      title: Collection items
+      items:
+        type: object
+        required:
+          - title
+          - url
+          - event_date
+        properties:
+          title:
+            type: string
+            title: Title
+          url:
+            type: string
+            title: Item URL
+          description:
+            type: string
+            title: Description
+          image_src:
+            type: string
+            title: Thumbnail image URL
+          image_alt:
+            type: string
+            title: Thumbnail image alternative text
+          metadata:
+            type: array
+            title: Metadata
+            items:
+              type: string
+          tags:
+            type: array
+            title: Tags
+            items:
+              type: string
+          event_date:
+            type: string
+            title: Event date and time
+            description: ISO 8601 date or date-time value used for semantic time markup and the calendar date treatment.
+          event_date_label:
+            type: string
+            title: Event date label
+            description: Human-readable date or date-time label.
+  required:
+    - items

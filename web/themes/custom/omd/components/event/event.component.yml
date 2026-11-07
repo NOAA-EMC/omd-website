@@ -1,0 +1,71 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Event
+description: Full event detail layout with schedule, attendance information, and registration action.
+status: stable
+props:
+  type: object
+  properties:
+    event_title:
+      type: string
+      title: Event title
+    event_hero_image_uri:
+      type: string
+      title: Hero image URI
+    event_summary:
+      type:
+        - object
+        - string
+      title: Summary
+    event_format:
+      type:
+        - object
+        - string
+      title: Format
+    event_start_value:
+      type:
+        - integer
+        - string
+      title: Event start value
+      description: Raw Smart Date start timestamp used by the calendar date treatment.
+    event_end_value:
+      type:
+        - integer
+        - string
+      title: Event end value
+      description: Raw Smart Date end timestamp used by the calendar date treatment.
+    event_timezone:
+      type:
+        - string
+        - 'null'
+      title: Event timezone
+      description: IANA timezone associated with the Smart Date value.
+    event_recurring:
+      type: boolean
+      title: Recurring event
+    event_location:
+      type:
+        - object
+        - string
+      title: Location or meeting details
+    event_link_url:
+      type: string
+      title: Registration or join URL
+    event_link_label:
+      type: string
+      title: Registration or join link label
+      default: Event Registration
+    event_tags:
+      type:
+        - object
+        - string
+      title: Topics
+    event_details:
+      type:
+        - object
+        - string
+      title: Event details
+    event_classes:
+      type: array
+      title: Event classes
+      items:
+        type: string

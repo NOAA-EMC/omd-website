@@ -1,0 +1,50 @@
+@use "uswds-core" as *;
+
+.event {
+  .event-content {
+    @include u-padding-y(2);
+
+    @include at-media("tablet") {
+      display: grid;
+      gap: units(4);
+      grid-template-columns: minmax(0, 13fr) minmax(16rem, 7fr);
+    }
+  }
+
+  .event-main {
+    @include at-media("tablet") {
+      min-width: 0;
+    }
+  }
+
+  .event-format {
+    @include u-font("ui", "2xs");
+    @include u-text("bold");
+    @include u-text("uppercase");
+    @include u-color("primary-dark");
+    @include u-margin-bottom(0.5);
+  }
+
+  .event-title {
+    @include u-color("primary");
+    @include u-margin-y(1);
+  }
+
+  .event-summary {
+    @include u-font("sans", "md");
+    @include u-margin-bottom(2);
+  }
+  .event-tags {
+    @include u-margin-top(2);
+    @include u-margin-bottom(4);
+  }
+
+  .event-body {
+    @include u-font("sans", "md");
+    @include u-margin-top(4);
+    /* prettier-ignore */
+    h2, h3, h4, h5, h6 {
+      @include u-color("primary-dark");
+    }
+  }
+}

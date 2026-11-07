@@ -44,4 +44,5 @@ lando drush storybook:generate-all-stories --uri=https://omd.lndo.site
 ```
 
 See the theme [README](../README.md) for the WSL Storybook and asset-build
-commands, including the optional story watcher.
+commands. Its Storybook workflow automatically regenerates stories after any
+component or template Twig change.

@@ -1,6 +1,6 @@
-{% stories article with { title: 'OMD/Content/Article' } %}
+{% stories article with { title: 'Content/Article' } %}
 
-{% story full_article with { name: 'Full article' } %}
+{% story article_content_type with { name: 'Article Content Type' } %}
 {% set guidance_text %}
   <p>Current guidance highlights a developing low-pressure system moving across the region.</p>
 {% endset %}
@@ -16,11 +16,9 @@
 {% endset %}
 
 {% set article_tags %}
-  <ul class="links">
-    <li><a href="/taxonomy/term/1">Forecast guidance</a></li>
-    <li><a href="/taxonomy/term/2">Severe weather</a></li>
-    <li><a href="/taxonomy/term/3">Model development</a></li>
-  </ul>
+  <a href="/taxonomy/term/1" class="usa-tag">Forecast guidance</a>
+  <a href="/taxonomy/term/2" class="usa-tag">Severe weather</a>
+  <a href="/taxonomy/term/3" class="usa-tag">Model development</a>
 {% endset %}
 
 {{ include('omd:article', {

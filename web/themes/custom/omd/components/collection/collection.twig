@@ -1,0 +1,63 @@
+{% set items = items|default([]) %}
+{% set variant = variant|default('default') %}
+
+{% if variant != 'item' %}
+<ul class="usa-collection{{ variant == 'two_column' ? ' grid-row grid-gap' : '' }}">
+{% endif %}
+  {% for item in items %}
+    {% if variant != 'item' %}
+    <li class="usa-collection__item{{ variant == 'two_column' ? ' tablet:grid-col-6' : '' }}">
+    {% endif %}
+      <div class="collection-item">
+        <div class="collection-media display-flex flex-column flex-align-start">
+
+          {% if item.image_src|default('') %}
+            <img class="usa-collection__img margin-bottom-1" src="{{ item.image_src }}" alt="{{ item.image_alt|default('') }}">
+          {% endif %}
+
+          <div class="usa-collection__calendar-date">
+            <time datetime="{{ item.event_date }}">
+              <span class="usa-collection__calendar-date-month">{{ item.event_date|date('M')|upper }}</span>
+              <span class="usa-collection__calendar-date-day">{{ item.event_date|date('j') }}</span>
+            </time>
+          </div>
+        </div>
+
+        <div class="usa-collection__body">
+          <h3 class="usa-collection__heading">
+            <a class="usa-link" href="{{ item.url }}">{{ item.title }}</a>
+          </h3>
+
+          {% if item.description|default('') %}
+            <p class="usa-collection__description">{{ item.description }}</p>
+          {% endif %}
+
+          {% if item.metadata|default([]) %}
+            <ul class="usa-collection__meta" aria-label="More information">
+              {% for metadata_item in item.metadata|default([]) %}
+                <li class="usa-collection__meta-item">{{ metadata_item }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          {% if item.tags|default([]) %}
+            {% set rendered_tags %}
+              {% for tag in item.tags %}
+                <span class="usa-tag">{{ tag }}</span>
+              {% endfor %}
+            {% endset %}
+            {{ include('omd:tags', {
+            tags: rendered_tags,
+            label: 'Topics'
+          }, false) }}
+          {% endif %}
+        
+        </div>
+      </div>
+    {% if variant != 'item' %}
+    </li>
+    {% endif %}
+  {% endfor %}
+{% if variant != 'item' %}
+</ul>
+{% endif %}

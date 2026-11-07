@@ -1,16 +1,15 @@
-{% stories article_tags with { title: 'OMD/Components/Article Tags' } %}
+{% stories article_tags with { title: 'Components/Tags' } %}
 
 {% story linked_tags with { name: 'Linked tags' } %}
 {% set rendered_tags %}
-  <ul class="links">
-    <li><a href="/taxonomy/term/1">Forecast guidance</a></li>
-    <li><a href="/taxonomy/term/2">Severe weather</a></li>
-    <li><a href="/taxonomy/term/3">Model development</a></li>
-  </ul>
+  <a href="/taxonomy/term/1" class="usa-tag">Forecast guidance</a>
+  <a href="/taxonomy/term/2" class="usa-tag">Severe weather</a>
+  <a href="/taxonomy/term/3" class="usa-tag">Model development</a>
 {% endset %}
+
 {{ include('omd:tags', {
   tags: rendered_tags,
-  label: 'Related topics'
+  label: 'Topics'
 }, false) }}
 {% endstory %}
 

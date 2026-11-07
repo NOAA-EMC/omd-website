@@ -1,0 +1,50 @@
+{% set location_content = location|default(null)|render %}
+
+<div class="event-card" aria-label="Event information">
+
+  {% if month|default or date_label|default or time_label|default or frequency_label|default or location_content %}
+    <div class="event-card__details">
+      {% if month|default and day|default %}
+        <div class="event-card__calendar{{ is_multi_day|default ? ' event-card__calendar--range' : '' }}">
+          <div class="usa-collection__calendar-date">
+            <time datetime="{{ datetime|default('') }}">
+              <span class="usa-collection__calendar-date-month">{{ month }}</span>
+              <span class="usa-collection__calendar-date-day">{{ day }}</span>
+            </time>
+          </div>
+        </div>
+      {% endif %}
+
+      <dl class="event-card__metadata">
+        {% if date_label|default %}
+          <div class="event-card__metadata-item"><dt>
+              {{ is_multi_day|default ? 'Dates' : 'Date' }}
+            </dt><dd>
+              {{ date_label }}
+            </dd></div>
+        {% endif %}
+        {% if time_label|default %}
+          <div class="event-card__metadata-item"><dt>Time</dt><dd>
+              {{ time_label }}
+            </dd></div>
+        {% endif %}
+        {% if frequency_label|default %}
+          <div class="event-card__metadata-item"><dt>Frequency</dt><dd>
+              {{ frequency_label }}
+            </dd></div>
+        {% endif %}
+        {% if location_content %}
+          <div class="event-card__metadata-item"><dt>Location</dt><dd>
+              {{ location_content }}
+            </dd></div>
+        {% endif %}
+      </dl>
+    </div>
+  {% endif %}
+
+  {% if link_url|default %}
+    <div class="event-card__action">
+      <a class="usa-button" href="{{ link_url }}">{{ link_label|default('Event Registration') }}</a>
+    </div>
+  {% endif %}
+</div>

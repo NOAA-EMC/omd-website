@@ -1,0 +1,98 @@
+{# Normalized inputs. #}
+{% set event_start_value = event_start_value|default('') %}
+{% set event_end_value = event_end_value|default('') %}
+{% set event_timezone = event_timezone|default(null) %}
+{% set event_recurring = event_recurring|default(false) %}
+
+{# Render field content once. #}
+{% set event_format_content = event_format|default(null)|render %}
+{% set event_summary_content = event_summary|default(null)|render %}
+{% set event_location_content = event_location|default(null)|render %}
+{% set event_tags_content = event_tags|default(null) %}
+{% set event_details_content = event_details|default(null)|render %}
+
+{# Format schedule values for the Event Card. #}
+{% set event_is_multi_day = event_start_value and event_end_value and event_start_value|date('M j', event_timezone) != event_end_value|date('M j', event_timezone) %}
+{% set event_calendar_day = event_start_value ? event_start_value|date('j', event_timezone) : '' %}
+{% set event_date_display = event_start_value ? event_start_value|date('l, F j, Y', event_timezone) : '' %}
+{% set event_time_display = event_start_value ? event_start_value|date('g:i A', event_timezone) : '' %}
+{% set event_date_label = event_date_display %}
+{% set event_time_label = event_time_display %}
+{% set event_timezone_label = '' %}
+
+{% if event_start_value %}
+  {% set event_timezone_value = event_end_value ? event_end_value : event_start_value %}
+  {% set event_timezone_label = event_timezone_value|date('T', event_timezone) %}
+{% endif %}
+
+{% set has_event_information = event_start_value or event_end_value or event_location_content or event_recurring %}
+{% if event_is_multi_day %}
+  {% set event_calendar_day = event_calendar_day ~ '–' ~ event_end_value|date('j', event_timezone) %}
+  {% if event_start_value|date('Y', event_timezone) == event_end_value|date('Y', event_timezone) %}
+    {% set event_date_label = event_start_value|date('l, F j', event_timezone) ~ ' – ' ~ event_end_value|date('l, F j, Y', event_timezone) %}
+  {% else %}
+    {% set event_date_label = event_start_value|date('l, F j, Y', event_timezone) ~ ' – ' ~ event_end_value|date('l, F j, Y', event_timezone) %}
+  {% endif %}
+{% endif %}
+{% if event_end_value %}
+  {% set event_time_label = event_time_label ~ ' – ' ~ event_end_value|date('g:i A', event_timezone) %}
+{% endif %}
+{% if event_timezone_label %}
+  {% set event_time_label = event_time_label ~ ' ' ~ event_timezone_label %}
+{% endif %}
+
+<article{{ attributes.addClass(event_classes|default(['event'])) }}>
+  {% if event_hero_image_uri|default %}
+    {{ include('omd:hero-callout', {
+      hero_heading: '',
+      hero_image_uri: event_hero_image_uri,
+      hero_body: '',
+      variant: 'contained'
+    }, false) }}
+  {% endif %}
+
+  <div class="event-content">
+    <div class="event-main">
+      {% if event_format_content %}
+        <div class="event-format">{{ event_format_content }}</div>
+      {% endif %}
+
+      {% if event_title|default %}
+        <h1 class="event-title">{{ event_title }}</h1>
+      {% endif %}
+
+      {% if event_summary_content %}
+        <div class="event-summary">{{ event_summary_content }}</div>
+      {% endif %}
+
+      {% if event_tags_content %}
+        <div class="event-tags">
+          {{ include('omd:tags', { tags: event_tags_content, label: 'Topics' }, false) }}
+        </div>
+      {% endif %}
+
+      {% if event_details_content %}
+        <div class="event-body">
+          <h2>Event Details</h2>
+          {{ event_details_content }}
+        </div>
+      {% endif %}
+    </div>
+    <aside class="event-aside">
+      {% if event_link_url|default or has_event_information %}
+        {{ include('omd:event-card', {
+          month: event_start_value ? event_start_value|date('M', event_timezone)|upper : '',
+          day: event_calendar_day,
+          datetime: event_start_value ? event_start_value|date('c', event_timezone) : '',
+          date_label: event_date_label,
+          time_label: event_time_label,
+          frequency_label: event_recurring ? 'Recurring event' : '',
+          location: event_location_content,
+          link_url: event_link_url|default(''),
+          link_label: event_link_label|default('Event Registration'),
+          is_multi_day: event_is_multi_day
+        }, false) }}
+      {% endif %}
+    </aside>
+  </div>
+</article>

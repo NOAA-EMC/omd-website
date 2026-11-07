@@ -1,0 +1,23 @@
+{% stories collection with { title: 'Components/Collection' } %}
+
+{% story collection_item with { name: 'Collection Item' } %}
+  {{ include('@omd/collection/collection-story-data.twig', { variant: 'single' }, false) }}
+{% endstory %}
+
+{% story collection_item_with_media with { name: 'Collection Item with Media' } %}
+  {{ include('@omd/collection/collection-story-data.twig', { variant: 'single_media' }, false) }}
+{% endstory %}
+
+{% story upcoming_events with { name: 'Events' } %}
+  {{ include('@omd/collection/collection-story-data.twig', { variant: 'upcoming' }, false) }}
+{% endstory %}
+
+{% story past_events with { name: 'Events with Media' } %}
+  {{ include('@omd/collection/collection-story-data.twig', { variant: 'media' }, false) }}
+{% endstory %}
+
+{% story past_events_two_column with { name: 'Events with Media Two Column' } %}
+  {{ include('@omd/collection/collection-story-data.twig', { variant: 'media', collection_variant: 'two_column' }, false) }}
+{% endstory %}
+
+{% endstories %}

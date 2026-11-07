@@ -1,0 +1,128 @@
+{% set variants = {
+  single: [
+    {
+      title: 'Modeling Seminar: Advancing hurricane prediction',
+      url: '/events/hurricane-prediction-seminar',
+      description: 'A seminar on new approaches to hurricane intensity prediction and their operational applications.',
+      event_date: '2026-11-12T14:00:00-05:00',
+      event_date_label: 'November 12, 2026, 2:00 p.m. ET',
+      metadata: ['Virtual seminar', 'Event format: Seminar'],
+      tags: ['Seminar', 'Hurricanes']
+    }
+  ],
+  single_media: [
+    {
+      title: 'Model development workshop',
+      url: '/events/model-development-workshop',
+      description: 'A workshop covering recent advances in model development and their operational applications.',
+      event_date: '2026-10-15T10:00:00-04:00',
+      event_date_label: 'October 15, 2026, 10:00 a.m. ET',
+      image_src: '/themes/custom/omd/assets/images/model-development.png',
+      image_alt: 'Line chart with data points over a contour map',
+      metadata: ['Virtual workshop', 'Event format: Event'],
+      tags: ['Workshop', 'Model development']
+    }
+  ],
+  upcoming: [
+    {
+      title: 'Modeling Seminar: Advancing hurricane prediction',
+      url: '/events/hurricane-prediction-seminar',
+      description: 'A seminar on new approaches to hurricane intensity prediction and their operational applications.',
+      event_date: '2026-11-12T14:00:00-05:00',
+      event_date_label: 'November 12, 2026, 2:00 p.m. ET',
+      metadata: ['Virtual seminar', 'Event format: Seminar'],
+      tags: ['Seminar', 'Hurricanes']
+    },
+    {
+      title: 'Community forecast tools workshop',
+      url: '/events/forecast-tools-workshop',
+      description: 'Learn about forecast tools and resources available to the weather community.',
+      event_date: '2026-11-19T10:00:00-05:00',
+      event_date_label: 'November 19, 2026, 10:00 a.m. ET',
+      metadata: ['Silver Spring, Maryland', 'Event format: Event'],
+      tags: ['Workshop', 'Forecast guidance']
+    },
+    {
+      title: 'Coastal resilience data briefing',
+      url: '/events/coastal-resilience-briefing',
+      description: 'An overview of new data products that support coastal resilience planning and decision-making.',
+      event_date: '2026-12-03T13:00:00-05:00',
+      event_date_label: 'December 3, 2026, 1:00 p.m. ET',
+      metadata: ['Virtual briefing', 'Event format: Event'],
+      tags: ['Coastal resilience', 'Data products']
+    }
+  ],
+  media: [
+    {
+      title: 'Model development workshop',
+      url: '/events/model-development-workshop',
+      description: 'A workshop covering recent advances in model development and their operational applications.',
+      event_date: '2026-10-15T10:00:00-04:00',
+      event_date_label: 'October 15, 2026, 10:00 a.m. ET',
+      image_src: '/themes/custom/omd/assets/images/model-development.png',
+      image_alt: 'Line chart with data points over a contour map',
+      metadata: ['Virtual workshop', 'Event format: Event'],
+      tags: ['Workshop', 'Model development']
+    },
+    {
+      title: 'Research seminar: Improving forecast guidance',
+      url: '/events/forecast-guidance-seminar',
+      description: 'A discussion of research that improves the quality and communication of forecast guidance.',
+      event_date: '2026-09-22T14:00:00-04:00',
+      event_date_label: 'September 22, 2026, 2:00 p.m. ET',
+      image_src: '/themes/custom/omd/assets/images/research-innovation.png',
+      image_alt: 'Globe with a cloud connected to network nodes',
+      metadata: ['Silver Spring, Maryland', 'Event format: Seminar'],
+      tags: ['Seminar', 'Forecast guidance']
+    },
+    {
+      title: 'Data assimilation training session',
+      url: '/events/data-assimilation-training',
+      description: 'A hands-on session introducing data assimilation methods for environmental prediction systems.',
+      event_date: '2026-08-18T09:30:00-04:00',
+      event_date_label: 'August 18, 2026, 9:30 a.m. ET',
+      image_src: '/themes/custom/omd/assets/images/model-development.png',
+      image_alt: 'Line chart with data points over a contour map',
+      metadata: ['Silver Spring, Maryland', 'Event format: Workshop'],
+      tags: ['Training', 'Data assimilation']
+    },
+    {
+      title: 'Coastal resilience data briefing',
+      url: '/events/coastal-resilience-briefing',
+      description: 'An overview of new data products that support coastal resilience planning and decision-making.',
+      event_date: '2026-07-24T13:00:00-04:00',
+      event_date_label: 'July 24, 2026, 1:00 p.m. ET',
+      image_src: '/themes/custom/omd/assets/images/research-innovation.png',
+      image_alt: 'Globe with a cloud connected to network nodes',
+      metadata: ['Virtual briefing', 'Event format: Event'],
+      tags: ['Coastal resilience', 'Data products']
+    },
+    {
+      title: 'Forecast model evaluation forum',
+      url: '/events/model-evaluation-forum',
+      description: 'A forum on evaluating forecast model performance and sharing operational lessons learned.',
+      event_date: '2026-06-09T11:00:00-04:00',
+      event_date_label: 'June 9, 2026, 11:00 a.m. ET',
+      image_src: '/themes/custom/omd/assets/images/model-development.png',
+      image_alt: 'Line chart with data points over a contour map',
+      metadata: ['Silver Spring, Maryland', 'Event format: Seminar'],
+      tags: ['Model evaluation', 'Forecast guidance']
+    },
+    {
+      title: 'Earth system modeling showcase',
+      url: '/events/earth-system-modeling-showcase',
+      description: 'A showcase of collaborative earth system modeling research and future development priorities.',
+      event_date: '2026-05-14T14:30:00-04:00',
+      event_date_label: 'May 14, 2026, 2:30 p.m. ET',
+      image_src: '/themes/custom/omd/assets/images/research-innovation.png',
+      image_alt: 'Globe with a cloud connected to network nodes',
+      metadata: ['Virtual showcase', 'Event format: Event'],
+      tags: ['Earth system modeling', 'Research']
+    }
+  ]
+} %}
+
+{{ include('omd:collection', {
+  variant: collection_variant|default('default'),
+  items: variants[variant]|default([])
+}, false) }}

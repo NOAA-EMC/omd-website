@@ -1,0 +1,29 @@
+uuid: d9d8b841-881a-4af5-9a66-6a43c16f1371
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_format
+    - node.type.event
+    - taxonomy.vocabulary.event_format
+id: node.event.field_event_format
+field_name: field_event_format
+entity_type: node
+bundle: event
+label: Format
+description: 'Choose whether this listing is an event or seminar.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event_format: event_format
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: event_format
+field_type: entity_reference
