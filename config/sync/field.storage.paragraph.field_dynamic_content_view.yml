@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - paragraphs
+    - views
     - viewsreference
 id: paragraph.field_dynamic_content_view
 field_name: field_dynamic_content_view
