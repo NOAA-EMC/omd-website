@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.dynamic_content.field_dynamic_content_view
-    - field.field.paragraph.dynamic_content.field_section_heading
     - paragraphs.paragraphs_type.dynamic_content
   module:
     - viewsreference
@@ -18,14 +17,6 @@ content:
     weight: 1
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_section_heading:
-    type: string_textfield
-    weight: 0
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true
