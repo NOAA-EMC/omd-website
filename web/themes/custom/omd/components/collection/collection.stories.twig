@@ -1,55 +1,23 @@
 {% stories collection with { title: 'Components/Collection' } %}
 
+{% story collection_item with { name: 'Collection Item' } %}
+  {{ include('@omd/collection/collection-story-data.twig', { variant: 'single' }, false) }}
+{% endstory %}
+
+{% story collection_item_with_media with { name: 'Collection Item with Media' } %}
+  {{ include('@omd/collection/collection-story-data.twig', { variant: 'single_media' }, false) }}
+{% endstory %}
+
 {% story upcoming_events with { name: 'Events' } %}
-{% set items = [
-  {
-    title: 'Modeling Seminar: Advancing hurricane prediction',
-    url: '/events/hurricane-prediction-seminar',
-    description: 'A seminar on new approaches to hurricane intensity prediction and their operational applications.',
-    event_date: '2026-11-12T14:00:00-05:00',
-    event_date_label: 'November 12, 2026, 2:00 p.m. ET',
-    metadata: ['Virtual seminar', 'Event format: Seminar'],
-    tags: ['Seminar', 'Hurricanes']
-  },
-  {
-    title: 'Community forecast tools workshop',
-    url: '/events/forecast-tools-workshop',
-    description: 'Learn about forecast tools and resources available to the weather community.',
-    event_date: '2026-11-19T10:00:00-05:00',
-    event_date_label: 'November 19, 2026, 10:00 a.m. ET',
-    metadata: ['Silver Spring, Maryland', 'Event format: Event'],
-    tags: ['Workshop', 'Forecast guidance']
-  }
-] %}
-{{ include('omd:collection', { items: items }, false) }}
+  {{ include('@omd/collection/collection-story-data.twig', { variant: 'upcoming' }, false) }}
 {% endstory %}
 
 {% story past_events with { name: 'Events with Media' } %}
-{% set items = [
-  {
-    title: 'Model development workshop',
-    url: '/events/model-development-workshop',
-    description: 'A workshop covering recent advances in model development and their operational applications.',
-    event_date: '2026-10-15T10:00:00-04:00',
-    event_date_label: 'October 15, 2026, 10:00 a.m. ET',
-    image_src: '/themes/custom/omd/assets/images/model-development.png',
-    image_alt: 'Line chart with data points over a contour map',
-    metadata: ['Virtual workshop', 'Event format: Event'],
-    tags: ['Workshop', 'Model development']
-  },
-  {
-    title: 'Research seminar: Improving forecast guidance',
-    url: '/events/forecast-guidance-seminar',
-    description: 'A discussion of research that improves the quality and communication of forecast guidance.',
-    event_date: '2026-09-22T14:00:00-04:00',
-    event_date_label: 'September 22, 2026, 2:00 p.m. ET',
-    image_src: '/themes/custom/omd/assets/images/research-innovation.png',
-    image_alt: 'Globe with a cloud connected to network nodes',
-    metadata: ['Silver Spring, Maryland', 'Event format: Seminar'],
-    tags: ['Seminar', 'Forecast guidance']
-  }
-] %}
-{{ include('omd:collection', { items: items }, false) }}
+  {{ include('@omd/collection/collection-story-data.twig', { variant: 'media' }, false) }}
+{% endstory %}
+
+{% story past_events_two_column with { name: 'Events with Media Two Column' } %}
+  {{ include('@omd/collection/collection-story-data.twig', { variant: 'media', collection_variant: 'two_column' }, false) }}
 {% endstory %}
 
 {% endstories %}

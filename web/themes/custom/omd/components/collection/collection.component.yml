@@ -5,6 +5,13 @@ status: stable
 props:
   type: object
   properties:
+    variant:
+      type: string
+      title: Layout variant
+      enum:
+        - default
+        - two_column
+      default: default
     items:
       type: array
       title: Collection items
