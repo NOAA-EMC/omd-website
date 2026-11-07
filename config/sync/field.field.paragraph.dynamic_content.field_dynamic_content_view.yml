@@ -6,6 +6,7 @@ dependencies:
     - field.storage.paragraph.field_dynamic_content_view
     - paragraphs.paragraphs_type.dynamic_content
     - views.view.latest_articles
+    - views.view.upcoming_events
   module:
     - viewsreference
 id: paragraph.dynamic_content.field_dynamic_content_view
@@ -25,5 +26,6 @@ settings:
     default: default
   preselect_views:
     latest_articles: latest_articles
+    upcoming_events: upcoming_events
   enabled_settings: {  }
 field_type: viewsreference
