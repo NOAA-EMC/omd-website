@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.paragraph.field_dynamic_content_view
     - paragraphs.paragraphs_type.dynamic_content
+    - views.view.latest_articles
+    - views.view.upcoming_events
   module:
     - viewsreference
 id: paragraph.dynamic_content.field_dynamic_content_view
@@ -18,10 +20,8 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: views
-  handler_settings:
-    target_bundles: null
-    auto_create: 0
+  handler: 'viewsreference:view'
+  handler_settings: { }
   plugin_types:
     default: default
   preselect_views:
