@@ -1,4 +1,4 @@
-uuid: 06068238-e4b0-40f6-be9c-3838978b9385
+uuid: 5e5306c3-8216-48bb-acff-cd6fc4b7c96b
 langcode: en
 status: true
 dependencies:
@@ -6,8 +6,8 @@ dependencies:
     - entity_reference_revisions
     - node
     - paragraphs
-id: node.field_dynamic_content
-field_name: field_dynamic_content
+id: node.field_page_sections
+field_name: field_page_sections
 entity_type: node
 type: entity_reference_revisions
 settings:

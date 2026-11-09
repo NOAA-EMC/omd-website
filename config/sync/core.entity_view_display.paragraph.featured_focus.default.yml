@@ -1,0 +1,16 @@
+uuid: f75aa0e0-59e4-4ca5-8be5-6f873a0a0aed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.featured_focus.field_featured_focus_article
+    - field.field.paragraph.featured_focus.field_focus_image_side
+    - paragraphs.paragraphs_type.featured_focus
+id: paragraph.featured_focus.default
+targetEntityType: paragraph
+bundle: featured_focus
+mode: default
+content: {  }
+hidden:
+  field_featured_focus_article: true
+  field_focus_image_side: true

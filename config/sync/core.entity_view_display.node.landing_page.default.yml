@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.landing_page.field_dynamic_content
+    - field.field.node.landing_page.field_page_sections
     - field.field.node.landing_page.field_hero_body
     - field.field.node.landing_page.field_hero_call_to_action
     - field.field.node.landing_page.field_hero_call_to_action_link
@@ -19,7 +19,7 @@ targetEntityType: node
 bundle: landing_page
 mode: default
 content:
-  field_dynamic_content:
+  field_page_sections:
     type: entity_reference_revisions_entity_view
     label: visually_hidden
     settings:
