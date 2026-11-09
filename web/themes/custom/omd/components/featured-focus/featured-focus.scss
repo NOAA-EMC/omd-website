@@ -12,9 +12,11 @@
     @include u-padding(5);
   }
 
-  &--image-left {
-    @include at-media("tablet") {
-      flex-direction: row-reverse;
+  &-media-left {
+    .featured-focus-media {
+      @include at-media("tablet") {
+        @include u-order("first");
+      }
     }
   }
 
@@ -27,7 +29,7 @@
     @include u-text("bold");
     @include u-text("uppercase");
     @include u-margin-y(0.5);
-    color: #ffbe2e;
+    @include u-text("accent-warm-light");
   }
 
   .featured-focus-heading {
@@ -52,7 +54,8 @@
 
     img {
       @include u-width("full");
-      display: block;
+      @include u-border-bottom("05", "solid", "accent-warm-light");
+      @include u-display("block");
     }
   }
 }

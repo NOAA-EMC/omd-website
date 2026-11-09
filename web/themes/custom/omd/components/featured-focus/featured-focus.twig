@@ -8,7 +8,7 @@
 {% set link_label = link_label|default('Learn more') %}
 {% set classes = classes|default([]) %}
 
-<article{{ attributes.addClass(['featured-focus', 'featured-focus--image-' ~ image_position]|merge(classes)) }}>
+<article{{ attributes.addClass(['featured-focus', 'featured-focus-media-' ~ image_position]|merge(classes)) }}>
   <div class="featured-focus-content">
     {% if label %}
       <p class="featured-focus-label">{{ label }}</p>
