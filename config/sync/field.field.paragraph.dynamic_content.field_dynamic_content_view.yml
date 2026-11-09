@@ -21,7 +21,7 @@ default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'viewsreference:view'
-  handler_settings: { }
+  handler_settings: {  }
   plugin_types:
     default: default
   preselect_views:
