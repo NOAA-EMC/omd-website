@@ -1,0 +1,21 @@
+uuid: 68e626d6-0e0c-4dbe-84ba-b3199aa27b18
+langcode: en
+status: true
+dependencies:
+  module:
+    - easy_breadcrumb
+    - system
+  theme:
+    - omd
+id: omd_breadcrumbs
+theme: omd
+region: breadcrumb
+weight: -100
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }
