@@ -1,0 +1,33 @@
+{% set label = label|default('') %}
+{% set title = title|default('') %}
+{% set summary = summary|default(null) %}
+{% set image_src = image_src|default('') %}
+{% set image_alt = image_alt|default('') %}
+{% set image_position = image_position|default('right') %}
+{% set link_url = link_url|default('') %}
+{% set link_label = link_label|default('Learn more') %}
+{% set classes = classes|default([]) %}
+
+<article{{ attributes.addClass(['featured-focus', 'featured-focus--image-' ~ image_position]|merge(classes)) }}>
+  <div class="featured-focus-content">
+    {% if label %}
+      <p class="featured-focus-label">{{ label }}</p>
+    {% endif %}
+
+    <h2 class="featured-focus-heading">{{ title }}</h2>
+
+    {% if summary|render %}
+      <div class="featured-focus-summary">{{ summary }}</div>
+    {% endif %}
+
+    {% if link_url %}
+      <a class="usa-button usa-button--inverse featured-focus-link" href="{{ link_url }}">{{ link_label }}</a>
+    {% endif %}
+  </div>
+
+  {% if image_src %}
+    <div class="featured-focus-media">
+      <img src="{{ image_src }}" alt="{{ image_alt }}">
+    </div>
+  {% endif %}
+</article>
