@@ -20,7 +20,7 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:paragraph'
+  handler: paragraphs_limits
   handler_settings:
     target_bundles:
       dynamic_content: dynamic_content
@@ -30,10 +30,16 @@ settings:
       dynamic_content:
         weight: 3
         enabled: true
+        lower_limit: 0
+        upper_limit: 0
       featured_focus:
         weight: 4
         enabled: true
+        lower_limit: 0
+        upper_limit: 1
       section:
         weight: 5
         enabled: false
+        lower_limit: 0
+        upper_limit: 0
 field_type: entity_reference_revisions

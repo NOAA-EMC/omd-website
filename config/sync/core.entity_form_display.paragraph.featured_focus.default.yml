@@ -6,22 +6,16 @@ dependencies:
     - field.field.paragraph.featured_focus.field_featured_focus_article
     - field.field.paragraph.featured_focus.field_focus_image_side
     - paragraphs.paragraphs_type.featured_focus
-  module:
-    - options
 id: paragraph.featured_focus.default
 targetEntityType: paragraph
 bundle: featured_focus
 mode: default
 content:
   field_featured_focus_article:
-    type: entity_reference_autocomplete
+    type: options_select
     weight: 0
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_focus_image_side:
     type: options_select
