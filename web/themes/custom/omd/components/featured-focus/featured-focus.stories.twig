@@ -1,0 +1,28 @@
+{% stories featured_focus with { title: 'Components/Featured Focus' } %}
+
+{% story default with { name: 'Featured Focus - Image Right' } %}
+  {{ include('omd:featured-focus', {
+    label: 'Featured focus',
+    title: 'Improving forecast guidance for communities',
+    summary: 'Explore how the Office of Modeling and Development advances the science, tools, and partnerships that support more reliable environmental prediction.',
+    image_src: '/themes/custom/omd/assets/images/research-innovation.png',
+    image_alt: 'Globe with a cloud connected to network nodes',
+    link_url: '/focus/forecast-guidance',
+    link_label: 'Explore the focus area'
+  }, false) }}
+{% endstory %}
+
+{% story image_left with { name: 'Featured Focus - Image Left' } %}
+  {{ include('omd:featured-focus', {
+    label: 'Featured focus',
+    title: 'Improving forecast guidance for communities',
+    summary: 'Explore how the Office of Modeling and Development advances the science, tools, and partnerships that support more reliable environmental prediction.',
+    image_src: '/themes/custom/omd/assets/images/research-innovation.png',
+    image_alt: 'Globe with a cloud connected to network nodes',
+    image_position: 'left',
+    link_url: '/focus/forecast-guidance',
+    link_label: 'Explore the focus area'
+  }, false) }}
+{% endstory %}
+
+{% endstories %}

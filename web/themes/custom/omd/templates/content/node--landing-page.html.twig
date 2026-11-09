@@ -93,8 +93,7 @@
 		call_to_action_url: '#'
 		}, false) }}
 
-		{# Render remaining node fields, suppressing the ones already used in the hero #}
-		{{ content|without('field_hero_heading', 'field_hero_image', 'field_hero_call_to_action') }}
+    {{ content.field_page_sections }}
 	</div>
 
 </article>

@@ -1,0 +1,23 @@
+uuid: a1ca8145-61d5-418e-a097-e3051c8a89ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_focus_image_side
+    - paragraphs.paragraphs_type.featured_focus
+  module:
+    - options
+id: paragraph.featured_focus.field_focus_image_side
+field_name: field_focus_image_side
+entity_type: paragraph
+bundle: featured_focus
+label: 'Image position'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: right
+default_value_callback: ''
+settings: {  }
+field_type: list_string

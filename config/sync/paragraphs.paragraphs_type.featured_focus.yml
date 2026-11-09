@@ -1,0 +1,10 @@
+uuid: 4b7c2e78-e8e2-4bbd-93c2-2c35a41c77d0
+langcode: en
+status: true
+dependencies: {  }
+id: featured_focus
+label: 'Featured Focus'
+icon_uuid: null
+icon_default: null
+description: 'Highlights a selected article within the page layout.'
+behavior_plugins: {  }

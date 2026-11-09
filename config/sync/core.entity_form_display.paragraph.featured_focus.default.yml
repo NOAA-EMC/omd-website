@@ -1,0 +1,28 @@
+uuid: 2cb811f6-2eef-4f7d-82ac-c30e1858dce9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.featured_focus.field_featured_focus_article
+    - field.field.paragraph.featured_focus.field_focus_image_side
+    - paragraphs.paragraphs_type.featured_focus
+id: paragraph.featured_focus.default
+targetEntityType: paragraph
+bundle: featured_focus
+mode: default
+content:
+  field_featured_focus_article:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_focus_image_side:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,34 +1,45 @@
-uuid: 13296619-02eb-43a6-9866-533b77406f57
+uuid: 4d5d4fb2-784e-4e0a-a8b8-898785328931
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_dynamic_content
+    - field.storage.node.field_page_sections
     - node.type.landing_page
     - paragraphs.paragraphs_type.dynamic_content
+    - paragraphs.paragraphs_type.featured_focus
   module:
     - entity_reference_revisions
-id: node.landing_page.field_dynamic_content
-field_name: field_dynamic_content
+id: node.landing_page.field_page_sections
+field_name: field_page_sections
 entity_type: node
 bundle: landing_page
-label: 'Dynamic Content'
+label: 'Page Sections'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:paragraph'
+  handler: paragraphs_limits
   handler_settings:
     target_bundles:
       dynamic_content: dynamic_content
+      featured_focus: featured_focus
     negate: 0
     target_bundles_drag_drop:
       dynamic_content:
         weight: 3
         enabled: true
-      section:
+        lower_limit: 0
+        upper_limit: 0
+      featured_focus:
         weight: 4
+        enabled: true
+        lower_limit: 0
+        upper_limit: 1
+      section:
+        weight: 5
         enabled: false
+        lower_limit: 0
+        upper_limit: 0
 field_type: entity_reference_revisions

@@ -1,0 +1,61 @@
+@use "uswds-core" as *;
+
+.featured-focus {
+  @include u-bg("primary-darker");
+  @include u-color("white");
+  @include u-padding(3);
+
+  @include at-media("tablet") {
+    @include u-display("flex");
+    @include u-align-items("align-center");
+    @include grid-gap(4);
+    @include u-padding(5);
+  }
+
+  &-media-left {
+    .featured-focus-media {
+      @include at-media("tablet") {
+        @include u-order("first");
+      }
+    }
+  }
+
+  .featured-focus-content {
+    @include u-flex("fill");
+  }
+
+  .featured-focus-label {
+    @include u-font("ui", "2xs");
+    @include u-text("bold");
+    @include u-text("uppercase");
+    @include u-margin-y(0.5);
+    @include u-text("accent-warm-light");
+  }
+
+  .featured-focus-heading {
+    @include u-margin-top(0);
+  }
+
+  .featured-focus-summary {
+    @include u-measure(5);
+  }
+
+  .featured-focus-link {
+    @include u-margin-top(2);
+  }
+
+  .featured-focus-media {
+    @include u-margin-top(3);
+
+    @include at-media("tablet") {
+      @include u-margin-top(0);
+      @include grid-col(6);
+    }
+
+    img {
+      @include u-width("full");
+      @include u-border-bottom("05", "solid", "accent-warm-light");
+      @include u-display("block");
+    }
+  }
+}
