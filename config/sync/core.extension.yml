@@ -35,8 +35,8 @@ module:
   node: 0
   options: 0
   page_cache: 0
-  paragraphs_type_permissions: 0
   paragraphs_limits: 0
+  paragraphs_type_permissions: 0
   path: 0
   path_alias: 0
   smart_date: 0
@@ -45,11 +45,13 @@ module:
   system: 0
   taxonomy: 0
   text: 0
+  token: 0
   toolbar: 0
   update: 0
   user: 0
   views_ui: 0
   viewsreference: 0
+  pathauto: 1
   views: 10
   paragraphs: 11
   standard: 1000
