@@ -1,0 +1,29 @@
+uuid: 267714b3-7387-4621-a2e0-0d50937dcf98
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+    - node.type.basic_page
+    - node.type.event
+    - node.type.landing_page
+  module:
+    - node
+id: default_content_pattern
+label: 'Default Content Pattern'
+type: 'canonical_entities:node'
+pattern: '/[node:menu-link:parents:join-path]/[node:title]'
+selection_criteria:
+  9fc06030-b5d5-4a8e-9e9b-74466fd7d7a3:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      article: article
+      basic_page: basic_page
+      event: event
+      landing_page: landing_page
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Theme override for the Easy Breadcrumb trail.
+ *
+ * Easy Breadcrumb replaces Drupal's breadcrumb builder and renders through
+ * the core system breadcrumb block. This template supplies the USWDS
+ * component markup for that block.
+ */
+#}
+{% if breadcrumb %}
+  <nav class="usa-breadcrumb" aria-label="{{ 'Breadcrumbs'|t }}">
+    <ol class="usa-breadcrumb__list">
+      {% for item in breadcrumb %}
+        <li{{ create_attribute({
+          class: ['usa-breadcrumb__list-item', loop.last ? 'usa-current'],
+          'aria-current': loop.last ? 'page',
+        }) }}>
+          {% if item.url and not loop.last %}
+            <a href="{{ item.url }}" class="usa-breadcrumb__link"><span>{{ item.text }}</span></a>
+          {% else %}
+            <span>{{ item.text }}</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endif %}
